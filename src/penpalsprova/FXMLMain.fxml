@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Accordion?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="581.0" prefWidth="1007.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="penpalsprova.ControllerMain">
+   <top>
+      <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="7.0" prefWidth="703.0" BorderPane.alignment="CENTER">
+         <children>
+            <HBox alignment="TOP_RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="25.0" prefWidth="918.0" HBox.hgrow="ALWAYS">
+               <children>
+                  <ImageView fitHeight="15.0" fitWidth="15.0" mouseTransparent="true" pickOnBounds="true">
+                     <image>
+                        <Image url="@../../../../Desktop/DAM2/Programació%20Orientada%20a%20Objectes/PenPals_imatges/lupa_buscar.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets right="3.0" top="5.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <TextField prefHeight="25.0" prefWidth="264.0" promptText="Buscar...">
+                     <HBox.margin>
+                        <Insets right="50.0" />
+                     </HBox.margin>
+                  </TextField>
+                  <MenuBar maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="25.0" prefWidth="481.0">
+                    <menus>
+                        <Menu mnemonicParsing="false" text="Configuració">
+                          <items>
+                            <MenuItem mnemonicParsing="false" onAction="#obrir_about" text="About..." />
+                          </items>
+                        </Menu>
+                        <Menu mnemonicParsing="false" text="Crear grup" />
+                        <Menu mnemonicParsing="false" text="Afegir usuari" />
+                      <Menu mnemonicParsing="false" text="Nota ràpida" />
+                      <Menu mnemonicParsing="false" text="Notificacions" />
+                      <Menu mnemonicParsing="false" text="Usuari" />
+                    </menus>
+                  </MenuBar>
+               </children>
+            </HBox>
+         </children>
+         <BorderPane.margin>
+            <Insets bottom="5.0" top="5.0" />
+         </BorderPane.margin>
+      </HBox>
+   </top>
+   <left>
+      <GridPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="467.0" prefWidth="178.0" BorderPane.alignment="CENTER">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints maxHeight="-Infinity" minHeight="25.0" prefHeight="25.0" vgrow="NEVER" />
+          <RowConstraints maxHeight="1.7976931348623157E308" prefHeight="478.0" vgrow="ALWAYS" />
+          <RowConstraints maxHeight="-Infinity" minHeight="25.0" prefHeight="25.0" vgrow="NEVER" />
+        </rowConstraints>
+         <children>
+            <Button maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#sortir_penpals" prefHeight="66.0" prefWidth="178.0" text="Sortir" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS" />
+            <Accordion maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="0.0" prefWidth="178.0" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS">
+              <panes>
+                <TitledPane animated="false" text="Notes personals">
+                     <content>
+                        <GridPane>
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" prefWidth="100.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints maxHeight="20.0" minHeight="0.0" prefHeight="0.0" vgrow="SOMETIMES" />
+                            <RowConstraints maxHeight="20.0" minHeight="0.0" prefHeight="0.0" vgrow="SOMETIMES" />
+                            <RowConstraints maxHeight="20.0" minHeight="0.0" prefHeight="0.0" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="20.0" minHeight="0.0" prefHeight="0.0" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="20.0" minHeight="0.0" prefHeight="0.0" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="20.0" minHeight="0.0" prefHeight="0.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <Label prefHeight="75.0" prefWidth="156.0" text="Nota personal 2" GridPane.rowIndex="1" />
+                              <Label prefHeight="75.0" prefWidth="173.0" text="Nota personal 1" />
+                              <Label prefHeight="75.0" prefWidth="156.0" text="Nota personal 3" GridPane.rowIndex="2" />
+                              <Label prefHeight="76.0" prefWidth="156.0" text="Nota personal 4" GridPane.rowIndex="3" />
+                              <Label prefHeight="75.0" prefWidth="156.0" text="Nota personal 5" GridPane.rowIndex="4" />
+                              <Label prefHeight="20.0" prefWidth="167.0" text="+   Afegir nota" GridPane.rowIndex="5">
+                                 <GridPane.margin>
+                                    <Insets top="10.0" />
+                                 </GridPane.margin>
+                              </Label>
+                           </children>
+                        </GridPane>
+                     </content>
+                </TitledPane>
+                  <TitledPane text="Prioritaris">
+                     <content>
+                        <GridPane>
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" prefWidth="100.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints maxHeight="20.0" minHeight="0.0" prefHeight="0.0" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="20.0" minHeight="0.0" prefHeight="0.0" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="20.0" minHeight="0.0" prefHeight="0.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
+                              <Label onMouseClicked="#veure_nota" prefHeight="146.0" prefWidth="156.0" text="Nota prioritaria 1" GridPane.rowIndex="1" />
+                              <Label prefHeight="43.0" prefWidth="156.0" text="Nota prioritaria 2" />
+                              <Label prefHeight="20.0" prefWidth="167.0" text="+   Afegir nota" GridPane.rowIndex="2">
+                                 <GridPane.margin>
+                                    <Insets top="10.0" />
+                                 </GridPane.margin>
+                              </Label>
+                           </children>
+                        </GridPane>
+                     </content>
+                  </TitledPane>
+                <TitledPane animated="false" text="Favorits">
+                     <content>
+                        <GridPane>
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints maxHeight="20.0" minHeight="20.0" prefHeight="20.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <Label prefHeight="20.0" prefWidth="167.0" text="+   Afegir nota" />
+                           </children>
+                        </GridPane>
+                     </content>
+                </TitledPane>
+                  <TitledPane animated="false" text="Grups">
+                     <content>
+                        <GridPane>
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints maxHeight="20.0" minHeight="20.0" prefHeight="20.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
+                              <Label prefHeight="20.0" prefWidth="167.0" text="+   Crear grup" />
+                           </children>
+                        </GridPane>
+                     </content>
+                  </TitledPane>
+                <TitledPane animated="false" text="Contactes">
+                     <content>
+                        <GridPane>
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints maxHeight="20.0" minHeight="20.0" prefHeight="20.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
+                              <Label prefHeight="20.0" prefWidth="167.0" text="+   Afegir contacte" />
+                           </children>
+                        </GridPane>
+                     </content>
+                </TitledPane>
+              </panes>
+            </Accordion>
+            <Button maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#veure_principal" prefHeight="79.0" prefWidth="178.0" text="INICI" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS" />
+         </children>
+      </GridPane>
+   </left>
+</BorderPane>
