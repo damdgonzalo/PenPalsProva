@@ -9,16 +9,16 @@ import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
 public class LogInMain extends Application {
+	
+	static Scene main_scene;
+	static Stage stage;
 	     
      @Override
      public void start(Stage stage) throws Exception {
-          Parent border_pane_main = FXMLLoader.load(getClass().getResource("FXMLMain.fxml"));
-          
-          GridPane pantalla_principal = FXMLLoader.load(getClass().getResource("FXMLPantallaPrincipal.fxml"));
-          //border_pane_main.setCenter(pantalla_principal);
-  		
-          Scene main_scene = new Scene(border_pane_main);
-          main_scene.getStylesheets().add(PenPalsMain.class.getResource("main_style.css").toExternalForm());
+    	 LogInMain.stage = stage;
+          Parent login_root = FXMLLoader.load(getClass().getResource("FXMLLogIn.fxml"));
+            		
+          main_scene = new Scene(login_root);
           
           stage.setTitle("PenPals");
           stage.setScene(main_scene);

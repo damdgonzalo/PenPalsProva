@@ -24,6 +24,7 @@ public class ControllerMain implements Initializable {
 	
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {
+		
 	}
 	
 	@FXML public void veure_nota(MouseEvent event) throws IOException {

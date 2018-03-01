@@ -11,10 +11,12 @@ import javafx.stage.Stage;
 public class PenPalsMain extends Application {
 	
 	static Scene main_scene;
+	static Scene login_scene;
 	static BorderPane border_pane_main;
      
      @Override
-     public void start(Stage stage) throws Exception {
+     public void start(Stage primary_stage) throws Exception {
+    	 
           border_pane_main = FXMLLoader.load(getClass().getResource("FXMLMain.fxml"));
           
           GridPane pantalla_principal = FXMLLoader.load(getClass().getResource("FXMLPantallaPrincipal.fxml"));
@@ -23,9 +25,9 @@ public class PenPalsMain extends Application {
           main_scene = new Scene(border_pane_main);
           main_scene.getStylesheets().add(PenPalsMain.class.getResource("main_style.css").toExternalForm());
           
-          stage.setTitle("PenPals");
-          stage.setScene(main_scene);
-          stage.show();
+          primary_stage.setTitle("PenPals");
+          primary_stage.setScene(main_scene);
+          primary_stage.show();
      }
 
      /**
