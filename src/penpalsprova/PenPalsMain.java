@@ -10,6 +10,7 @@ import javafx.stage.Stage;
 
 public class PenPalsMain extends Application {
 	
+	static Stage stage;
 	static Scene main_scene;
 	static Scene login_scene;
 	static BorderPane border_pane_main;
@@ -18,6 +19,7 @@ public class PenPalsMain extends Application {
      public void start(Stage primary_stage) throws Exception {
     	 
           border_pane_main = FXMLLoader.load(getClass().getResource("FXMLMain.fxml"));
+          stage = primary_stage;
           
           GridPane pantalla_principal = FXMLLoader.load(getClass().getResource("FXMLPantallaPrincipal.fxml"));
           border_pane_main.setCenter(pantalla_principal);

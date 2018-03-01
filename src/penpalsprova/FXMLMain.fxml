@@ -47,7 +47,10 @@
                         <Menu mnemonicParsing="false" text="Afegir usuari" />
                       <Menu mnemonicParsing="false" text="Nota ràpida" />
                       <Menu mnemonicParsing="false" text="Notificacions" />
-                      <Menu mnemonicParsing="false" text="Usuari" />
+                      <Menu mnemonicParsing="false" text="Usuari">
+                           <items>
+                              <MenuItem mnemonicParsing="false" onAction="#sortir_penpals" text="Sortir" />
+                           </items></Menu>
                     </menus>
                   </MenuBar>
                </children>
@@ -69,7 +72,7 @@
           <RowConstraints maxHeight="-Infinity" minHeight="25.0" prefHeight="25.0" vgrow="NEVER" />
         </rowConstraints>
          <children>
-            <Button maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#sortir_penpals" prefHeight="66.0" prefWidth="178.0" text="Sortir" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS" />
+            <Button maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#tencar_sessio" prefHeight="66.0" prefWidth="178.0" text="Tencar sessió" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS" />
             <Accordion maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="0.0" prefWidth="178.0" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS">
               <panes>
                 <TitledPane animated="false" text="Notes personals">

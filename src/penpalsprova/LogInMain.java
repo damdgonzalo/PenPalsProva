@@ -16,13 +16,13 @@ public class LogInMain extends Application {
      @Override
      public void start(Stage stage) throws Exception {
     	 LogInMain.stage = stage;
-          Parent login_root = FXMLLoader.load(getClass().getResource("FXMLLogIn.fxml"));
+    	 Parent login_root = FXMLLoader.load(getClass().getResource("FXMLLogIn.fxml"));
             		
-          main_scene = new Scene(login_root);
+    	 main_scene = new Scene(login_root);
           
-          stage.setTitle("PenPals");
-          stage.setScene(main_scene);
-          stage.show();
+    	 stage.setTitle("PenPals");
+    	 stage.setScene(main_scene);
+    	 stage.show();
      }
 
      /**

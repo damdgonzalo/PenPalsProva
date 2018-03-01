@@ -23,9 +23,7 @@ public class ControllerMain implements Initializable {
 	
 	
 	@Override
-	public void initialize(URL url, ResourceBundle rb) {
-		
-	}
+	public void initialize(URL url, ResourceBundle rb) {}
 	
 	@FXML public void veure_nota(MouseEvent event) throws IOException {
 		GridPane pantalla_veure_nota = FXMLLoader.load(getClass().getResource("FXMLVeureNota.fxml"));
@@ -35,6 +33,17 @@ public class ControllerMain implements Initializable {
 	@FXML public void veure_principal(ActionEvent event) throws IOException {
 		GridPane pantalla_principal = FXMLLoader.load(getClass().getResource("FXMLPantallaPrincipal.fxml"));
 		PenPalsMain.border_pane_main.setCenter(pantalla_principal);
+	}
+	
+	@FXML public void tencar_sessio(ActionEvent event) throws IOException {
+		GridPane root = FXMLLoader.load(getClass().getResource("FXMLLogIn.fxml")); //finestra que volem obrir
+		
+		Stage main_stage = LogInMain.stage;
+		Scene scene = new Scene(root);
+		PenPalsMain.main_scene = scene;
+		
+		main_stage.setScene(scene);
+		        
 	}
      
      
