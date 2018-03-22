@@ -9,8 +9,8 @@ import javafx.scene.layout.GridPane;
 
 public class ControllerVeureUsuari {
 
-	@FXML public void veure_principal(ActionEvent event) throws IOException {
-		GridPane pantalla_principal = FXMLLoader.load(getClass().getResource("FXMLPantallaPrincipal.fxml"));
+	@FXML public void veure_grup(ActionEvent event) throws IOException {
+		GridPane pantalla_principal = FXMLLoader.load(getClass().getResource("FXMLVeureGrup.fxml"));
 		PenPalsMain.border_pane_main.setCenter(pantalla_principal);
 	}
 }
