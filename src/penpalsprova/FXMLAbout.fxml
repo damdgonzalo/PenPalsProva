@@ -51,7 +51,7 @@
       </Button>
       <ImageView fitHeight="150.0" fitWidth="352.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1">
          <image>
-            <Image url="@../../../../Desktop/DAM2/Programació%20Orientada%20a%20Objectes/PenPals_imatges/penpals_logo.png" />
+            <Image url="@../../../PenPals_imatges/penpals_logo.png" />
          </image>
          <GridPane.margin>
             <Insets left="30.0" />

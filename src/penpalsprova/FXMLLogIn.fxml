@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<GridPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="549.0" prefWidth="1007.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/9.0.1" fx:controller="penpalsprova.ControllerLogIn">
+<GridPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="549.0" prefWidth="1007.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="penpalsprova.ControllerLogIn">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" />
   </columnConstraints>
@@ -24,7 +24,7 @@
    <children>
       <ImageView fitHeight="210.0" fitWidth="413.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.valignment="CENTER" GridPane.vgrow="NEVER">
          <image>
-            <Image url="@../../../../Desktop/DAM2/Programació%20Orientada%20a%20Objectes/PenPals_imatges/penpals_logo.png" />
+            <Image url="@../../../PenPals_imatges/penpals_logo.png" />
          </image>
          <GridPane.margin>
             <Insets top="50.0" />

@@ -42,8 +42,12 @@ public class ControllerMain implements Initializable {
 		Scene scene = new Scene(root);
 		PenPalsMain.main_scene = scene;
 		
-		main_stage.setScene(scene);
-		        
+		main_stage.setScene(scene); 
+	}
+	
+	@FXML public void veure_grup(MouseEvent event) throws IOException {
+		GridPane pantalla_veure_grup = FXMLLoader.load(getClass().getResource("FXMLVeureGrup.fxml"));
+		PenPalsMain.border_pane_main.setCenter(pantalla_veure_grup);
 	}
      
      

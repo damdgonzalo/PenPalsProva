@@ -52,7 +52,7 @@
          <children>
             <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true">
                <image>
-                  <Image url="@../../../../Desktop/DAM2/Programació%20Orientada%20a%20Objectes/PenPals_imatges/exclamacio.png" />
+                  <Image url="@../../../PenPals_imatges/exclamacio.png" />
                </image>
                <HBox.margin>
                   <Insets top="5.0" />
@@ -60,7 +60,7 @@
             </ImageView>
             <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../Desktop/DAM2/Programació%20Orientada%20a%20Objectes/PenPals_imatges/estrella.png" />
+                  <Image url="@../../../PenPals_imatges/estrella.png" />
                </image>
                <HBox.margin>
                   <Insets top="5.0" />
@@ -68,7 +68,7 @@
             </ImageView>
             <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../Desktop/DAM2/Programació%20Orientada%20a%20Objectes/PenPals_imatges/rellotge.png" />
+                  <Image url="@../../../PenPals_imatges/rellotge.png" />
                </image>
                <HBox.margin>
                   <Insets left="7.0" top="5.0" />

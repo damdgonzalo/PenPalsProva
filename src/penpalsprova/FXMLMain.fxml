@@ -25,7 +25,7 @@
                <children>
                   <ImageView fitHeight="15.0" fitWidth="15.0" mouseTransparent="true" pickOnBounds="true">
                      <image>
-                        <Image url="@../../../../Desktop/DAM2/Programació%20Orientada%20a%20Objectes/PenPals_imatges/lupa_buscar.png" />
+                        <Image url="@../../../PenPals_imatges/lupa_buscar.png" />
                      </image>
                      <HBox.margin>
                         <Insets right="3.0" top="5.0" />
@@ -152,11 +152,14 @@
                            </columnConstraints>
                            <rowConstraints>
                               <RowConstraints maxHeight="20.0" minHeight="20.0" prefHeight="20.0" vgrow="SOMETIMES" />
-                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="20.0" minHeight="20.0" prefHeight="20.0" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
                               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                            </rowConstraints>
                            <children>
-                              <Label prefHeight="20.0" prefWidth="167.0" text="+   Crear grup" />
+                              <Label onMouseClicked="#veure_grup" text="Grup 1" />
+                              <Label prefHeight="20.0" prefWidth="167.0" text="+   Crear grup" GridPane.rowIndex="2" />
+                              <Label text="Grup 2" GridPane.rowIndex="1" />
                            </children>
                         </GridPane>
                      </content>
@@ -168,12 +171,24 @@
                               <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                            </columnConstraints>
                            <rowConstraints>
+                              <RowConstraints />
+                              <RowConstraints />
+                              <RowConstraints />
+                              <RowConstraints />
+                              <RowConstraints />
+                              <RowConstraints />
                               <RowConstraints maxHeight="20.0" minHeight="20.0" prefHeight="20.0" vgrow="SOMETIMES" />
                               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                            </rowConstraints>
                            <children>
-                              <Label prefHeight="20.0" prefWidth="167.0" text="+   Afegir contacte" />
+                              <Label prefHeight="20.0" prefWidth="167.0" text="+   Afegir contacte" GridPane.rowIndex="6" />
+                              <Label text="Elba Ticano" />
+                              <Label text="Elvis Cocho" GridPane.rowIndex="1" />
+                              <Label text="Ana Tomía" GridPane.rowIndex="2" />
+                              <Label text="Armando Casas" GridPane.rowIndex="3" />
+                              <Label text="Johnny Meanoto" GridPane.rowIndex="4" />
+                              <Label text="Label" GridPane.rowIndex="5" />
                            </children>
                         </GridPane>
                      </content>
