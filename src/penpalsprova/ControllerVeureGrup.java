@@ -35,4 +35,14 @@ public class ControllerVeureGrup {
 		PenPalsMain.border_pane_main.setCenter(pantalla_administrador);
 	}
 	
+	@FXML public void veure_nota(ActionEvent event) throws IOException {
+		GridPane pantalla_administrador = FXMLLoader.load(getClass().getResource("FXMLVeureNota.fxml"));
+		PenPalsMain.border_pane_main.setCenter(pantalla_administrador);
+	}
+	
+	@FXML public void crear_nota(ActionEvent event) throws IOException {
+		GridPane crear_nota = FXMLLoader.load(getClass().getResource("FXMLCrearNota.fxml"));
+		PenPalsMain.border_pane_main.setCenter(crear_nota);
+	}
+	
 }

@@ -70,7 +70,7 @@
       </HBox>
       <VBox prefHeight="83.0" prefWidth="243.0" GridPane.columnIndex="1">
          <children>
-            <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="263.0" text="Crear nota en aquest grup" VBox.vgrow="NEVER">
+            <Button mnemonicParsing="false" onAction="#crear_nota" prefHeight="40.0" prefWidth="263.0" text="Crear nota en aquest grup" VBox.vgrow="NEVER">
                <VBox.margin>
                   <Insets bottom="2.0" />
                </VBox.margin>
