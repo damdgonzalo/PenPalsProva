@@ -2,21 +2,23 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="538.0" prefWidth="802.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="penpalsprova.ControllerVeureUsuari">
-  <columnConstraints>
-    <ColumnConstraints hgrow="SOMETIMES" maxWidth="394.0" minWidth="10.0" prefWidth="192.0" />
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="538.0" prefWidth="802.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="penpalsprova.ControllerEditarPerfil">
+   <columnConstraints>
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="394.0" minWidth="10.0" prefWidth="192.0" />
       <ColumnConstraints hgrow="SOMETIMES" maxWidth="683.0" minWidth="10.0" prefWidth="610.0" />
-  </columnConstraints>
-  <rowConstraints>
-    <RowConstraints maxHeight="131.0" minHeight="10.0" prefHeight="67.0" vgrow="SOMETIMES" />
-    <RowConstraints maxHeight="30.0" minHeight="0.0" prefHeight="135.0" vgrow="SOMETIMES" />
+   </columnConstraints>
+   <rowConstraints>
+      <RowConstraints maxHeight="131.0" minHeight="10.0" prefHeight="67.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="30.0" minHeight="0.0" prefHeight="135.0" vgrow="SOMETIMES" />
       <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="179.0" vgrow="SOMETIMES" />
       <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="179.0" vgrow="SOMETIMES" />
       <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="179.0" vgrow="SOMETIMES" />
@@ -26,7 +28,7 @@
       <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="179.0" vgrow="SOMETIMES" />
       <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="179.0" vgrow="SOMETIMES" />
       <RowConstraints maxHeight="455.0" minHeight="10.0" prefHeight="220.0" valignment="BOTTOM" vgrow="NEVER" />
-  </rowConstraints>
+   </rowConstraints>
    <children>
       <Label prefHeight="53.0" prefWidth="357.0" text="damdgonzalo" GridPane.columnSpan="2">
          <font>
@@ -84,31 +86,6 @@
             <Insets left="10.0" />
          </GridPane.margin>
       </Label>
-      <Label text="Dana Gonzalo" GridPane.columnIndex="1" GridPane.rowIndex="1">
-         <font>
-            <Font size="15.0" />
-         </font>
-      </Label>
-      <Label text="19/07/1997" GridPane.columnIndex="1" GridPane.rowIndex="2">
-         <font>
-            <Font size="15.0" />
-         </font>
-      </Label>
-      <Label text="damdgonzalo@gmail.com" GridPane.columnIndex="1" GridPane.rowIndex="4">
-         <font>
-            <Font size="15.0" />
-         </font>
-      </Label>
-      <Label text="722509568" GridPane.columnIndex="1" GridPane.rowIndex="5">
-         <font>
-            <Font size="15.0" />
-         </font>
-      </Label>
-      <Label text="972328695" GridPane.columnIndex="1" GridPane.rowIndex="6">
-         <font>
-            <Font size="15.0" />
-         </font>
-      </Label>
       <Label text="Grup1, Grup2" GridPane.columnIndex="1" GridPane.rowIndex="8">
          <font>
             <Font size="15.0" />
@@ -116,7 +93,7 @@
       </Label>
       <VBox alignment="BOTTOM_RIGHT" prefHeight="178.0" prefWidth="610.0" GridPane.columnIndex="1" GridPane.rowIndex="10" GridPane.valignment="TOP" GridPane.vgrow="NEVER">
          <children>
-            <Button mnemonicParsing="false" onAction="#editar_perfil" prefHeight="40.0" prefWidth="150.0" text="Editar perfil">
+            <Button mnemonicParsing="false" onAction="#veure_usuari" prefHeight="40.0" prefWidth="150.0" text="Guardar">
                <font>
                   <Font size="15.0" />
                </font>
@@ -124,7 +101,7 @@
                   <Insets bottom="2.0" right="10.0" />
                </VBox.margin>
             </Button>
-            <Button mnemonicParsing="false" onAction="#veure_grup" prefHeight="40.0" prefWidth="150.0" text="Cancelar">
+            <Button mnemonicParsing="false" onAction="#veure_usuari" prefHeight="40.0" prefWidth="150.0" text="Cancelar">
                <font>
                   <Font size="15.0" />
                </font>
@@ -134,5 +111,38 @@
             </Button>
          </children>
       </VBox>
+      <TextField prefHeight="31.0" prefWidth="132.0" text="Dana Gonzalo" GridPane.columnIndex="1" GridPane.rowIndex="1">
+         <font>
+            <Font size="15.0" />
+         </font>
+         <GridPane.margin>
+            <Insets right="20.0" />
+         </GridPane.margin>
+      </TextField>
+      <DatePicker prefHeight="25.0" prefWidth="181.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+      <TextField text="damdgonzalo@gmail.com" GridPane.columnIndex="1" GridPane.rowIndex="4">
+         <font>
+            <Font size="15.0" />
+         </font>
+         <GridPane.margin>
+            <Insets right="20.0" />
+         </GridPane.margin>
+      </TextField>
+      <TextField text="722508569" GridPane.columnIndex="1" GridPane.rowIndex="5">
+         <font>
+            <Font size="15.0" />
+         </font>
+         <GridPane.margin>
+            <Insets right="20.0" />
+         </GridPane.margin>
+      </TextField>
+      <TextField text="9723328695" GridPane.columnIndex="1" GridPane.rowIndex="6">
+         <font>
+            <Font size="15.0" />
+         </font>
+         <GridPane.margin>
+            <Insets right="20.0" />
+         </GridPane.margin>
+      </TextField>
    </children>
 </GridPane>

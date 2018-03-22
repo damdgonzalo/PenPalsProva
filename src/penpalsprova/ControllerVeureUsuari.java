@@ -13,4 +13,9 @@ public class ControllerVeureUsuari {
 		GridPane pantalla_principal = FXMLLoader.load(getClass().getResource("FXMLVeureGrup.fxml"));
 		PenPalsMain.border_pane_main.setCenter(pantalla_principal);
 	}
+	
+	@FXML public void editar_perfil(ActionEvent event) throws IOException {
+		GridPane pantalla_principal = FXMLLoader.load(getClass().getResource("FXMLEditarPerfil.fxml"));
+		PenPalsMain.border_pane_main.setCenter(pantalla_principal);
+	}
 }
