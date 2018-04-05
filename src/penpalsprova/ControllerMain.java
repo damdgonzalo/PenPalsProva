@@ -18,9 +18,14 @@ import javafx.stage.Stage;
 public class ControllerMain implements Initializable {
 	
 	static Stage about_stage;
+	@FXML GridPane llistaContactes;
 	
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {}
+	
+	public void carregarLlistaContactes() {
+		
+	}
 	
 	@FXML public void veure_nota(MouseEvent event) throws IOException {
 		GridPane pantalla_veure_nota = FXMLLoader.load(getClass().getResource("FXMLVeureNota.fxml"));

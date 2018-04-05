@@ -15,7 +15,7 @@ import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
 public class ControllerRegistrat {
-	Connexio connexio = ControllerLogIn.connexio;
+	ConnexioLogIn connexio = ControllerLogIn.connexio;
 	
 	@FXML TextField correu;
 	@FXML TextField usuari;
