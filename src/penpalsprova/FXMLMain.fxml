@@ -17,7 +17,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="581.0" prefWidth="1007.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="penpalsprova.ControllerMain">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="581.0" prefWidth="1007.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="penpalsprova.ControllerMain">
    <top>
       <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="7.0" prefWidth="703.0" BorderPane.alignment="CENTER">
          <children>
@@ -36,6 +36,7 @@
                         <Insets right="50.0" />
                      </HBox.margin>
                   </TextField>
+                  <Button fx:id="notaRapida" mnemonicParsing="false" onAction="#obrir_notaRapida" text="Nova Nota" />
                   <MenuBar maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="25.0" prefWidth="481.0">
                     <menus>
                         <Menu mnemonicParsing="false" text="Configuració">
@@ -45,7 +46,6 @@
                         </Menu>
                         <Menu mnemonicParsing="false" text="Crear grup" />
                         <Menu mnemonicParsing="false" text="Afegir usuari" />
-                      <Menu mnemonicParsing="false" text="Nota ràpida" />
                       <Menu mnemonicParsing="false" text="Notificacions" />
                       <Menu mnemonicParsing="false" text="Usuari">
                            <items>

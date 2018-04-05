@@ -31,7 +31,7 @@ public class ControllerLogIn implements Initializable {
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
    	 	try {
-			connexio = new Connexio("localhost", "5432", "postgres", "root");
+			connexio = new Connexio("192.168.17.219", "5432", "postgres", "root");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -49,7 +49,7 @@ public class ControllerLogIn implements Initializable {
 			Scene scene = new Scene(root);
 			PenPalsMain.main_scene = scene;
 			
-			//al centre mostrarà la pantalla principal
+			//al centre mostrarï¿½ la pantalla principal
 			GridPane pantalla_principal = FXMLLoader.load(getClass().getResource("FXMLPantallaPrincipal.fxml"));
 	        root.setCenter(pantalla_principal);
 			
@@ -77,7 +77,7 @@ public class ControllerLogIn implements Initializable {
 		contrasenyaOblidadaStage = new Stage();
     	 
 		contrasenyaOblidadaStage.setScene(scene);
-		contrasenyaOblidadaStage.setTitle("Recuperació de la contrasenya");
+		contrasenyaOblidadaStage.setTitle("Recuperaciï¿½ de la contrasenya");
 		contrasenyaOblidadaStage.setResizable(false);
 		contrasenyaOblidadaStage.initModality(Modality.WINDOW_MODAL); //impedeix que es clicki la finestra pare
 		contrasenyaOblidadaStage.initOwner(LogInMain.main_scene.getWindow()); 
