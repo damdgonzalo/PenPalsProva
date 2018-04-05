@@ -24,15 +24,27 @@ import javafx.stage.Stage;
 
 public class ControllerMain implements Initializable {
 	
+	static ConnexioContactes connexio;
 	static Stage about_stage;
 	@FXML GridPane llistaContactes;
 	
 	@Override
-	public void initialize(URL url, ResourceBundle rb) {}
+	public void initialize(URL url, ResourceBundle rb) {
+		try {
+			connexio = new ConnexioContactes();
+			carregarLlistaContactes();
+		} catch (Exception e) {e.printStackTrace();}
+	}
 	
-<<<<<<< HEAD
-	public void carregarLlistaContactes() {
+	public void carregarLlistaContactes() throws Exception {
+		List<String> contactes = connexio.getContactesUsuari();
 		
+		for (int i=0; i<contactes.size(); i++) {
+			Label lb = new Label(contactes.get(i));
+			llistaContactes.add(lb, 0, i);
+		}
+		
+		llistaContactes.add(new Label("   + Afegir contacte"), 0, contactes.size());
 	}
 	
 	@FXML javafx.scene.control.Button notaRapida;

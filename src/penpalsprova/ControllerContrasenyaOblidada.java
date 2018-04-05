@@ -87,7 +87,7 @@ public class ControllerContrasenyaOblidada {
 	    msg.setSubject(subject);
 	    msg.setSentDate(new Date());
 	    // set plain text message
-	    msg.setText("La teva contrasenya és: " + ControllerLogIn.connexio.getContrasenyaPerCorreu(toAddress));
+	    //msg.setText("La teva contrasenya és: " + ControllerLogIn.connexio.getContrasenyaPerCorreu(toAddress));
 
 	    // sends the e-mail
 	    Transport.send(msg);

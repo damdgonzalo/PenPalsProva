@@ -18,6 +18,7 @@ public class Connexio {
 	
 	public static Connection conn;
 	public static Statement stmt;
+	private static String usuariConnectat;
 	
 	public Connexio(String ip, String port, String usuari, String contrasenya) throws Exception {
 		Class.forName("org.postgresql.Driver");
@@ -34,6 +35,16 @@ public class Connexio {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+	}
+	
+//----------------------------------------------------------------------------------------------------------------------	
+	
+	public static void setUsuariConnectat(String usuariConnectat) {
+		Connexio.usuariConnectat = usuariConnectat;
+	}
+	
+	public static String getUsuari() {
+		return Connexio.usuariConnectat;
 	}
 	
 	

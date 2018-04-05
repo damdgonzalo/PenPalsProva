@@ -21,7 +21,7 @@ import penpalsprova.ConnexioLogIn;
 
 public class ControllerLogIn implements Initializable {
 	
-	ConnexioLogIn connexio;
+	static ConnexioLogIn connexio;
 	static Stage contrasenyaOblidadaStage;
 
 	@FXML Label missatgeError;
@@ -33,15 +33,16 @@ public class ControllerLogIn implements Initializable {
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		try {
 			connexio = new ConnexioLogIn();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		} catch (Exception ignored) {}
 	}
+	
+//----------------------------------------------------------------------------------------------------------------------	
 	
 	@FXML public void iniciar_sessio(ActionEvent event) throws Exception {
 		String respostaLogIn = connexio.intentarLogIn(usuari.getText(), contrasenya.getText());
 		
 		if (respostaLogIn.equals("OK")) {
+			Connexio.setUsuariConnectat(usuari.getText());
 			
 			BorderPane root = FXMLLoader.load(getClass().getResource("FXMLMain.fxml")); //finestra que volem obrir
 			PenPalsMain.border_pane_main = root;
@@ -60,6 +61,8 @@ public class ControllerLogIn implements Initializable {
 		else missatgeError.setText(respostaLogIn);
 	}
 	
+//----------------------------------------------------------------------------------------------------------------------
+	
 	@FXML public void registrarUsuari(ActionEvent e) throws Exception {
 		GridPane root = FXMLLoader.load(getClass().getResource("FXMLRegistrat.fxml")); //finestra que volem obrir
 		
@@ -70,6 +73,8 @@ public class ControllerLogIn implements Initializable {
 		
 		main_stage.setScene(scene);
 	}
+	
+//----------------------------------------------------------------------------------------------------------------------
 	
 	@FXML public void contrasenyaOblidada(ActionEvent e) throws IOException {
 		GridPane root = FXMLLoader.load(getClass().getResource("FXMLContrasenyaOblidada.fxml")); //finestra que volem obrir
