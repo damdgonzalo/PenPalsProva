@@ -4,14 +4,21 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import org.controlsfx.control.PopOver;
+
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -23,9 +30,13 @@ public class ControllerMain implements Initializable {
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {}
 	
+<<<<<<< HEAD
 	public void carregarLlistaContactes() {
 		
 	}
+=======
+	@FXML javafx.scene.control.Button notaRapida;
+>>>>>>> 958fa56c2cccb27990ec9bf3e8ea250621f38643
 	
 	@FXML public void veure_nota(MouseEvent event) throws IOException {
 		GridPane pantalla_veure_nota = FXMLLoader.load(getClass().getResource("FXMLVeureNota.fxml"));
@@ -55,7 +66,7 @@ public class ControllerMain implements Initializable {
      
      
 	/**
-	 * Obre en una finestra diferent a l'actual la pantalla "About" amb informació sobre el programa
+	 * Obre en una finestra diferent a l'actual la pantalla "About" amb informaciï¿½ sobre el programa
 	 * @param event
 	 * @throws Exception
 	 */
@@ -73,6 +84,31 @@ public class ControllerMain implements Initializable {
          
 		about_stage.show();
 	}
+	
+	/**
+	 * Obre en una finestra diferent a l'actual la pantalla "About" amb informaciï¿½ sobre el programa
+	 * @param event
+	 * @throws Exception
+	 */
+	@FXML public void obrir_notaRapida(ActionEvent event) throws Exception {
+	
+    	   /*Components del popOver*/
+		TextField campo = new TextField();   
+		Label text = new Label("Nova Nota");
+		Button popoverButton = new Button("Guardar");
+		text.setPadding(new Insets(10, 10, 30, 10)); 
+		campo.setPadding(new Insets(10, 10, 10, 10));
+		
+		VBox vbox = new VBox(text,campo,popoverButton);
+		vbox.setSpacing(10);
+		
+		
+		PopOver popover = new PopOver(vbox);
+		popover.setArrowLocation(PopOver.ArrowLocation.TOP_LEFT);
+		popover.show(notaRapida);
+	}
+	
+	
      
      
 	/**

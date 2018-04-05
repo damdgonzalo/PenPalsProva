@@ -20,12 +20,22 @@ public class ConnexioLogIn {
 		stmt = Connexio.stmt;
 	}
 	
+<<<<<<< HEAD
 	public String getContrasenyaPerCorreu(String correu) throws Exception {
 		stmt = conn.createStatement();
 		ResultSet rs = stmt.executeQuery("SELECT \"contrasenya\" FROM \"Usuaris\" WHERE \"correu\"='" + correu + "'");
 		rs.next();
 		
 		return rs.getString("contrasenya");
+=======
+	@Override
+	public void initialize(URL arg0, ResourceBundle arg1) {
+   	 	try {
+			connexio = new Connexio("192.168.17.219", "5432", "postgres", "root");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+>>>>>>> 958fa56c2cccb27990ec9bf3e8ea250621f38643
 	}
 	
 	/**
@@ -39,6 +49,7 @@ public class ConnexioLogIn {
 	public String intentarLogIn(String usuari, String contrasenya) throws SQLException {
 		if (!usuariExisteix(usuari)) return "L'usuari no existeix.";
 		
+<<<<<<< HEAD
 		if (!contrasenyaEsCorrecte(usuari, contrasenya)) return "La contrasenya és incorrecte.";
 		
 		return "OK";
@@ -67,6 +78,20 @@ public class ConnexioLogIn {
 		else {
 			DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd");
 			LocalDate localDate = LocalDate.now();
+=======
+		if (respostaLogIn.equals("OK")) {
+			
+			BorderPane root = FXMLLoader.load(getClass().getResource("FXMLMain.fxml")); //finestra que volem obrir
+			PenPalsMain.border_pane_main = root;
+			
+			Stage main_stage = LogInMain.stage;
+			Scene scene = new Scene(root);
+			PenPalsMain.main_scene = scene;
+			
+			//al centre mostrarï¿½ la pantalla principal
+			GridPane pantalla_principal = FXMLLoader.load(getClass().getResource("FXMLPantallaPrincipal.fxml"));
+	        root.setCenter(pantalla_principal);
+>>>>>>> 958fa56c2cccb27990ec9bf3e8ea250621f38643
 			
 			stmt = conn.createStatement();
 			String query = "INSERT INTO \"Usuaris\" (\"correu\",\"idUsuari\",\"contrasenya\",\"dataRegistre\")"
@@ -140,6 +165,7 @@ public class ConnexioLogIn {
 		return (contrasenya1.equals(contrasenya2)) ? true : false;
 	}
 	
+<<<<<<< HEAD
 	
 	/**
 	 * Retorna TRUE si una contrasenya introduïda per un usuari és correcte.
@@ -156,5 +182,20 @@ public class ConnexioLogIn {
 		
 		String contrasenyaCorrecta = rs.getString("contrasenya");
 		return (contrasenyaCorrecta.equals(contrasenya)) ? true:false;
+=======
+	@FXML public void contrasenyaOblidada(ActionEvent e) throws IOException {
+		GridPane root = FXMLLoader.load(getClass().getResource("FXMLContrasenyaOblidada.fxml")); //finestra que volem obrir
+	   	 
+		Scene scene = new Scene(root);
+		contrasenyaOblidadaStage = new Stage();
+    	 
+		contrasenyaOblidadaStage.setScene(scene);
+		contrasenyaOblidadaStage.setTitle("Recuperaciï¿½ de la contrasenya");
+		contrasenyaOblidadaStage.setResizable(false);
+		contrasenyaOblidadaStage.initModality(Modality.WINDOW_MODAL); //impedeix que es clicki la finestra pare
+		contrasenyaOblidadaStage.initOwner(LogInMain.main_scene.getWindow()); 
+         
+		contrasenyaOblidadaStage.show();
+>>>>>>> 958fa56c2cccb27990ec9bf3e8ea250621f38643
 	}
 }
