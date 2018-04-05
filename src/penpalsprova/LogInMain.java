@@ -1,5 +1,7 @@
 package penpalsprova;
 
+import java.util.regex.Pattern;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -22,6 +24,7 @@ public class LogInMain extends Application {
     	 stage.setScene(main_scene);
     	 stage.show();
      }
+     
 
      /**
       * @param args the command line arguments

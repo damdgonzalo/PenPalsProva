@@ -1,6 +1,5 @@
 package penpalsprova;
 
-import java.awt.Button;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -12,7 +11,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -20,7 +18,6 @@ import javafx.stage.Stage;
 public class ControllerMain implements Initializable {
 	
 	static Stage about_stage;
-	
 	
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {}
@@ -41,6 +38,7 @@ public class ControllerMain implements Initializable {
 		Stage main_stage = LogInMain.stage;
 		Scene scene = new Scene(root);
 		PenPalsMain.main_scene = scene;
+		LogInMain.main_scene = scene;
 		
 		main_stage.setScene(scene); 
 	}

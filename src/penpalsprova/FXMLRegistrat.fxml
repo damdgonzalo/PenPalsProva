@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<GridPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="549.0" prefWidth="1007.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="penpalsprova.ControllerRegistrat">
+   <columnConstraints>
+      <ColumnConstraints hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="733.0" prefWidth="752.0" />
+      <ColumnConstraints hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="255.0" />
+   </columnConstraints>
+   <rowConstraints>
+      <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="40.0" valignment="CENTER" vgrow="ALWAYS" />
+      <RowConstraints maxHeight="1.7976931348623157E308" minHeight="-Infinity" prefHeight="148.0" valignment="CENTER" vgrow="ALWAYS" />
+      <RowConstraints maxHeight="1.7976931348623157E308" minHeight="-Infinity" prefHeight="293.0" valignment="CENTER" vgrow="ALWAYS" />
+      <RowConstraints maxHeight="1.7976931348623157E308" minHeight="-Infinity" prefHeight="56.0" valignment="BOTTOM" vgrow="ALWAYS" />
+   </rowConstraints>
+   <children>
+      <ImageView fitHeight="123.0" fitWidth="294.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+         <image>
+            <Image url="@../../../PenPals_imatges/penpals_logo.png" />
+         </image>
+         <GridPane.margin>
+            <Insets />
+         </GridPane.margin>
+      </ImageView>
+      <VBox alignment="BOTTOM_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="87.0" prefWidth="990.0" GridPane.halignment="LEFT" GridPane.hgrow="NEVER" GridPane.rowIndex="3" GridPane.valignment="BOTTOM" GridPane.vgrow="ALWAYS">
+         <children>
+            <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#veureLogIn" prefHeight="40.0" prefWidth="175.0" text="Log In" VBox.vgrow="ALWAYS" />
+         </children>
+         <GridPane.margin>
+            <Insets bottom="10.0" left="10.0" top="5.0" />
+         </GridPane.margin>
+      </VBox>
+      <VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="148.0" prefWidth="1007.0" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.rowIndex="2" GridPane.valignment="TOP" GridPane.vgrow="NEVER">
+         <children>
+            <TextField fx:id="correu" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="350.0" promptText="Correu electrónic">
+               <font>
+                  <Font size="15.0" />
+               </font>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+            </TextField>
+            <TextField fx:id="usuari" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="350.0" promptText="Usuari" VBox.vgrow="NEVER">
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+               <font>
+                  <Font size="15.0" />
+               </font>
+               <VBox.margin>
+                  <Insets top="2.0" />
+               </VBox.margin>
+            </TextField>
+            <PasswordField fx:id="contrasenya1" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="350.0" promptText="Contrasenya">
+               <font>
+                  <Font size="15.0" />
+               </font>
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+            </PasswordField>
+            <PasswordField fx:id="contrasenya2" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="350.0" promptText="Repetir contrasenya">
+               <VBox.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="2.0" />
+               </VBox.margin>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </PasswordField>
+            <Button ellipsisString="Iniciar sessió" maxWidth="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#intentarRegistrarUsuari" prefWidth="350.0" text="Registrar-se" textAlignment="CENTER" underline="true" VBox.vgrow="NEVER">
+               <padding>
+                  <Insets bottom="10.0" top="10.0" />
+               </padding>
+               <VBox.margin>
+                  <Insets top="15.0" />
+               </VBox.margin>
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Button>
+            <Label fx:id="missatgeError" alignment="CENTER_RIGHT" ellipsisString="..." minWidth="-Infinity" prefHeight="17.0" prefWidth="350.0" textAlignment="RIGHT" textFill="#d00000">
+               <font>
+                  <Font name="Arial" size="13.0" />
+               </font>
+               <VBox.margin>
+                  <Insets top="5.0" />
+               </VBox.margin>
+            </Label>
+         </children>
+      </VBox>
+      <Label alignment="CENTER" contentDisplay="CENTER" ellipsisString="REGISTRA'T!" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" prefWidth="1007.0" text="R  E  G  I  S  T  R  A  '  T  !" GridPane.columnSpan="2">
+         <font>
+            <Font name="System Bold" size="28.0" />
+         </font>
+         <GridPane.margin>
+            <Insets top="20.0" />
+         </GridPane.margin>
+      </Label>
+      <GridPane GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.rowSpan="3">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="40.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="30.0" minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Label prefHeight="89.0" prefWidth="275.0" text="-&gt; asdlaksdfsfsdfsssssssssss" GridPane.rowIndex="1">
+               <font>
+                  <Font size="17.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets top="5.0" />
+               </GridPane.margin>
+            </Label>
+            <Label alignment="CENTER" ellipsisString="Què és PenPals?" prefHeight="35.0" prefWidth="213.0" text="Què és PenPals?" underline="true">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets bottom="5.0" top="20.0" />
+               </GridPane.margin>
+            </Label>
+            <Label text="-&gt; ÑAKLSDJADASDASD" GridPane.rowIndex="3">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Label>
+            <Label prefHeight="89.0" prefWidth="275.0" text="-&gt; asdlaksdfsfsdfsssssssssss" GridPane.rowIndex="2">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Label>
+         </children>
+         <GridPane.margin>
+            <Insets top="75.0" />
+         </GridPane.margin>
+      </GridPane>
+   </children>
+</GridPane>
