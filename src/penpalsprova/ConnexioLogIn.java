@@ -20,6 +20,9 @@ public class ConnexioLogIn {
 		stmt = Connexio.stmt;
 	}
 	
+	
+//---------------------------------------------------------------------------------------------------------------------	
+	
 	public String getContrasenyaPerCorreu(String correu) throws Exception {
 		stmt = conn.createStatement();
 		ResultSet rs = stmt.executeQuery("SELECT \"contrasenya\" FROM \"Usuaris\" WHERE \"correu\"='" + correu + "'");

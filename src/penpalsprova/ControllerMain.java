@@ -34,9 +34,8 @@ public class ControllerMain implements Initializable {
 	public void carregarLlistaContactes() {
 		
 	}
-=======
+	
 	@FXML javafx.scene.control.Button notaRapida;
->>>>>>> 958fa56c2cccb27990ec9bf3e8ea250621f38643
 	
 	@FXML public void veure_nota(MouseEvent event) throws IOException {
 		GridPane pantalla_veure_nota = FXMLLoader.load(getClass().getResource("FXMLVeureNota.fxml"));
