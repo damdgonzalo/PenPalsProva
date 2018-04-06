@@ -25,21 +25,29 @@ import javafx.stage.Stage;
 
 public class ControllerMain implements Initializable {
 	
+	static ConnexioGrups connexioGrups;
 	static ConnexioContactes connexio;
 	static Stage about_stage;
 	
 	@FXML GridPane llistaContactes;
+	@FXML GridPane llistaGrups;
 	
 	@FXML Button menuNotaRapida;
 	@FXML Button menuAfegirUsuari;
+<<<<<<< HEAD
 	@FXML Button menuNotificacions;
 	
 	
+=======
+	@FXML GridPane gridPaneMenuAfegirUsuari;
+>>>>>>> 26639ae4faba82a701b36e71038e16fee488606a
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {
 		try {
 			connexio = new ConnexioContactes();
+			connexioGrups = new ConnexioGrups();
 			carregarLlistaContactes();
+			carregarGrups();
 		} catch (Exception e) {e.printStackTrace();}
 	}
 	
@@ -59,6 +67,7 @@ public class ControllerMain implements Initializable {
 		llistaContactes.add(new Label("   + Afegir contacte"), 0, contactes.size());
 	}
 	
+<<<<<<< HEAD
 	@FXML public void mostrarNotificacions(ActionEvent e) throws Exception {
 		List<String> llistaNotificacions = Connexio.veureNotificacions();
 		
@@ -83,6 +92,21 @@ public class ControllerMain implements Initializable {
 	 * @param event
 	 * @throws IOException
 	 */
+=======
+	public void carregarGrups() throws Exception {
+		List<String> contactes = connexioGrups.getContactesUsuari();
+		
+		for(int i = 0; i<contactes.size(); i++) {
+			Label lb = new Label(contactes.get(i));
+			llistaGrups.add(lb, 0, i);
+		}
+		
+		llistaGrups.add(new Label("   + Afegir grup"), 0, contactes.size());
+	}
+	
+	@FXML javafx.scene.control.Button notaRapida;
+	
+>>>>>>> 26639ae4faba82a701b36e71038e16fee488606a
 	@FXML public void veure_nota(MouseEvent event) throws IOException {
 		GridPane pantalla_veure_nota = FXMLLoader.load(getClass().getResource("FXMLVeureNota.fxml"));
 		PenPalsMain.border_pane_main.setCenter(pantalla_veure_nota);
@@ -122,6 +146,8 @@ public class ControllerMain implements Initializable {
 	@FXML public void veure_grup(MouseEvent event) throws IOException {
 		GridPane pantalla_veure_grup = FXMLLoader.load(getClass().getResource("FXMLVeureGrup.fxml"));
 		PenPalsMain.border_pane_main.setCenter(pantalla_veure_grup);
+		
+		
 	}
      
      
@@ -146,7 +172,7 @@ public class ControllerMain implements Initializable {
 	}
 	
 	/**
-	 * Obre en una finestra diferent a l'actual la pantalla "About" amb informació sobre el programa
+	 * Obre en una finestra diferent a l'actual la pantalla "About" amb informaciï¿½ sobre el programa
 	 * @param event
 	 * @throws Exception
 	 */
@@ -169,11 +195,27 @@ public class ControllerMain implements Initializable {
 	}
 	
 	
+<<<<<<< HEAD
 	@FXML public void afegirUsuariRapid (ActionEvent event) throws IOException {
 		GridPane gridpane = FXMLLoader.load(getClass().getResource("FXMLMenuAfegirUsuari.fxml"));
 
 		PopOver popover = new PopOver();
 		popover.setContentNode(gridpane);
+=======
+	@FXML public void afegirUsuariRapid (ActionEvent event) {
+		/*Components del popOver*/
+		TextField campo = new TextField();   
+		Label text = new Label("Afegir usuari");
+		text.setPadding(new Insets(10, 10, 30, 10)); 
+		campo.setPadding(new Insets(10, 10, 10, 10));
+		
+		Button popoverButton = new Button("Enviar solï¿½licitud");
+	
+		VBox vbox = new VBox(text,campo,popoverButton);
+		vbox.setSpacing(10);
+		
+		PopOver popover = new PopOver(gridPaneMenuAfegirUsuari);
+>>>>>>> 26639ae4faba82a701b36e71038e16fee488606a
 		popover.setArrowLocation(PopOver.ArrowLocation.TOP_LEFT);
 		popover.show(menuAfegirUsuari);
 	}

@@ -14,7 +14,8 @@ public class LogInMain extends Application {
 	     
      @Override
      public void start(Stage stage) throws Exception {
-    	 connexio = new Connexio("localhost", "5432", "postgres", "root");
+    	 //connexio = new Connexio("localhost", "5432", "postgres", "root");
+    	 connexio = new Connexio("192.168.17.219", "5432", "postgres", "root");
     	 
     	 LogInMain.stage = stage;
     	 Parent login_root = FXMLLoader.load(getClass().getResource("FXMLLogIn.fxml"));

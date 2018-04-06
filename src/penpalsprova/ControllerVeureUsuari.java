@@ -18,4 +18,5 @@ public class ControllerVeureUsuari {
 		GridPane pantalla_principal = FXMLLoader.load(getClass().getResource("FXMLEditarPerfil.fxml"));
 		PenPalsMain.border_pane_main.setCenter(pantalla_principal);
 	}
+	
 }
