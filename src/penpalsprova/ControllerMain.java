@@ -2,6 +2,7 @@ package penpalsprova;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
 import org.controlsfx.control.PopOver;
@@ -26,7 +27,12 @@ public class ControllerMain implements Initializable {
 	
 	static ConnexioContactes connexio;
 	static Stage about_stage;
+	
 	@FXML GridPane llistaContactes;
+	
+	@FXML Button menuNotaRapida;
+	@FXML Button menuAfegirUsuari;
+	@FXML GridPane gridPaneMenuAfegirUsuari;
 	
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {
@@ -47,7 +53,7 @@ public class ControllerMain implements Initializable {
 		llistaContactes.add(new Label("   + Afegir contacte"), 0, contactes.size());
 	}
 	
-	@FXML javafx.scene.control.Button notaRapida;
+	
 	
 	@FXML public void veure_nota(MouseEvent event) throws IOException {
 		GridPane pantalla_veure_nota = FXMLLoader.load(getClass().getResource("FXMLVeureNota.fxml"));
@@ -97,13 +103,13 @@ public class ControllerMain implements Initializable {
 	}
 	
 	/**
-	 * Obre en una finestra diferent a l'actual la pantalla "About" amb informaciï¿½ sobre el programa
+	 * Obre en una finestra diferent a l'actual la pantalla "About" amb informació sobre el programa
 	 * @param event
 	 * @throws Exception
 	 */
 	@FXML public void obrir_notaRapida(ActionEvent event) throws Exception {
 	
-    	   /*Components del popOver*/
+    	/*Components del popOver*/
 		TextField campo = new TextField();   
 		Label text = new Label("Nova Nota");
 		Button popoverButton = new Button("Guardar");
@@ -116,9 +122,27 @@ public class ControllerMain implements Initializable {
 		
 		PopOver popover = new PopOver(vbox);
 		popover.setArrowLocation(PopOver.ArrowLocation.TOP_LEFT);
-		popover.show(notaRapida);
+		popover.show(menuNotaRapida);
 	}
 	
+	
+	@FXML public void afegirUsuariRapid (ActionEvent event) {
+		/*Components del popOver*/
+		TextField campo = new TextField();   
+		Label text = new Label("Afegir usuari");
+		text.setPadding(new Insets(10, 10, 30, 10)); 
+		campo.setPadding(new Insets(10, 10, 10, 10));
+		
+		Button popoverButton = new Button("Enviar sol·licitud");
+	
+		VBox vbox = new VBox(text,campo,popoverButton);
+		vbox.setSpacing(10);
+		
+		PopOver popover = new PopOver(gridPaneMenuAfegirUsuari);
+		popover.setArrowLocation(PopOver.ArrowLocation.TOP_LEFT);
+		popover.show(menuAfegirUsuari);
+
+	}
 	
      
      

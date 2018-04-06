@@ -4,9 +4,6 @@
 <?import javafx.scene.control.Accordion?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Menu?>
-<?import javafx.scene.control.MenuBar?>
-<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.TitledPane?>
 <?import javafx.scene.image.Image?>
@@ -36,23 +33,12 @@
                         <Insets right="50.0" />
                      </HBox.margin>
                   </TextField>
-                  <Button fx:id="notaRapida" mnemonicParsing="false" onAction="#obrir_notaRapida" text="Nova Nota" />
-                  <MenuBar maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="25.0" prefWidth="481.0">
-                    <menus>
-                        <Menu mnemonicParsing="false" text="Configuració">
-                          <items>
-                            <MenuItem mnemonicParsing="false" onAction="#obrir_about" text="About..." />
-                          </items>
-                        </Menu>
-                        <Menu mnemonicParsing="false" text="Crear grup" />
-                        <Menu mnemonicParsing="false" text="Afegir usuari" />
-                      <Menu mnemonicParsing="false" text="Notificacions" />
-                      <Menu mnemonicParsing="false" text="Usuari">
-                           <items>
-                              <MenuItem mnemonicParsing="false" onAction="#sortir_penpals" text="Sortir" />
-                           </items></Menu>
-                    </menus>
-                  </MenuBar>
+                  <Button fx:id="menuNotaRapida" mnemonicParsing="false" onAction="#obrir_notaRapida" prefWidth="85.0" text="Nova Nota" />
+                  <Button mnemonicParsing="false" prefWidth="85.0" text="Configuració" />
+                  <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="85.0" text="Crear grup" />
+                  <Button fx:id="menuAfegirUsuari" mnemonicParsing="false" onAction="#afegirUsuariRapid" prefWidth="85.0" text="Afegir usuari" />
+                  <Button mnemonicParsing="false" prefWidth="85.0" text="Notificacions" />
+                  <Button mnemonicParsing="false" prefWidth="85.0" text="Usuari" />
                </children>
             </HBox>
          </children>
