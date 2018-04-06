@@ -2,6 +2,7 @@ package penpalsprova;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
 import org.controlsfx.control.PopOver;
@@ -24,15 +25,19 @@ import javafx.stage.Stage;
 
 public class ControllerMain implements Initializable {
 	
+	static ConnexioGrups connexioGrups;
 	static ConnexioContactes connexio;
 	static Stage about_stage;
 	@FXML GridPane llistaContactes;
+	@FXML GridPane llistaGrups;
 	
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {
 		try {
 			connexio = new ConnexioContactes();
+			connexioGrups = new ConnexioGrups();
 			carregarLlistaContactes();
+			carregarGrups();
 		} catch (Exception e) {e.printStackTrace();}
 	}
 	
@@ -45,6 +50,17 @@ public class ControllerMain implements Initializable {
 		}
 		
 		llistaContactes.add(new Label("   + Afegir contacte"), 0, contactes.size());
+	}
+	
+	public void carregarGrups() throws Exception {
+		List<String> contactes = connexioGrups.getContactesUsuari();
+		
+		for(int i = 0; i<contactes.size(); i++) {
+			Label lb = new Label(contactes.get(i));
+			llistaGrups.add(lb, 0, i);
+		}
+		
+		llistaGrups.add(new Label("   + Afegir grup"), 0, contactes.size());
 	}
 	
 	@FXML javafx.scene.control.Button notaRapida;
@@ -73,6 +89,8 @@ public class ControllerMain implements Initializable {
 	@FXML public void veure_grup(MouseEvent event) throws IOException {
 		GridPane pantalla_veure_grup = FXMLLoader.load(getClass().getResource("FXMLVeureGrup.fxml"));
 		PenPalsMain.border_pane_main.setCenter(pantalla_veure_grup);
+		
+		
 	}
      
      
