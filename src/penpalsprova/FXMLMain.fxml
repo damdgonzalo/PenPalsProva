@@ -37,7 +37,7 @@
                   <Button mnemonicParsing="false" prefWidth="85.0" text="Configuració" />
                   <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="85.0" text="Crear grup" />
                   <Button fx:id="menuAfegirUsuari" mnemonicParsing="false" onAction="#afegirUsuariRapid" prefWidth="85.0" text="Afegir usuari" />
-                  <Button mnemonicParsing="false" prefWidth="85.0" text="Notificacions" />
+                  <Button fx:id="menuNotificacions" mnemonicParsing="false" onAction="#mostrarNotificacions" prefWidth="85.0" text="Notificacions" />
                   <Button mnemonicParsing="false" prefWidth="85.0" text="Usuari" />
                </children>
             </HBox>

@@ -32,7 +32,8 @@ public class ControllerMain implements Initializable {
 	
 	@FXML Button menuNotaRapida;
 	@FXML Button menuAfegirUsuari;
-	@FXML GridPane gridPaneMenuAfegirUsuari;
+	@FXML Button menuNotificacions;
+	
 	
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {
@@ -42,6 +43,11 @@ public class ControllerMain implements Initializable {
 		} catch (Exception e) {e.printStackTrace();}
 	}
 	
+	
+	/**
+	 * Mostra una llista amb tots els contactes que té l'usuari connectat
+	 * @throws Exception
+	 */
 	public void carregarLlistaContactes() throws Exception {
 		List<String> contactes = connexio.getContactesUsuari();
 		
@@ -53,18 +59,50 @@ public class ControllerMain implements Initializable {
 		llistaContactes.add(new Label("   + Afegir contacte"), 0, contactes.size());
 	}
 	
+	@FXML public void mostrarNotificacions(ActionEvent e) throws Exception {
+		List<String> llistaNotificacions = Connexio.veureNotificacions();
+		
+		VBox llista = new VBox();
+		for(String notificacio : llistaNotificacions) {
+			Label text = new Label(notificacio);
+			//Button popoverButton = new Button("Guardar");
+			text.setPadding(new Insets(10, 10, 30, 10));
+			
+			llista.getChildren().add(text);
+		}
+		llista.setSpacing(10);
+		
+		
+		PopOver popover = new PopOver(llista);
+		popover.setArrowLocation(PopOver.ArrowLocation.TOP_CENTER);
+		popover.show(menuNotificacions);
+	}
 	
-	
+	/**
+	 * Mostra els detalls d'una nota en la que s'ha fet click
+	 * @param event
+	 * @throws IOException
+	 */
 	@FXML public void veure_nota(MouseEvent event) throws IOException {
 		GridPane pantalla_veure_nota = FXMLLoader.load(getClass().getResource("FXMLVeureNota.fxml"));
 		PenPalsMain.border_pane_main.setCenter(pantalla_veure_nota);
 	}
 	
+	/**
+	 * Mostra la pantalla principal
+	 * @param event
+	 * @throws IOException
+	 */
 	@FXML public void veure_principal(ActionEvent event) throws IOException {
 		GridPane pantalla_principal = FXMLLoader.load(getClass().getResource("FXMLPantallaPrincipal.fxml"));
 		PenPalsMain.border_pane_main.setCenter(pantalla_principal);
 	}
 	
+	/**
+	 * Tenca la sessió actual i torna a la pantalla d'inici
+	 * @param event
+	 * @throws IOException
+	 */
 	@FXML public void tencar_sessio(ActionEvent event) throws IOException {
 		GridPane root = FXMLLoader.load(getClass().getResource("FXMLLogIn.fxml")); //finestra que volem obrir
 		
@@ -76,6 +114,11 @@ public class ControllerMain implements Initializable {
 		main_stage.setScene(scene); 
 	}
 	
+	/**
+	 * Mostra informació sobre un grup en el que s'ha fet click
+	 * @param event
+	 * @throws IOException
+	 */
 	@FXML public void veure_grup(MouseEvent event) throws IOException {
 		GridPane pantalla_veure_grup = FXMLLoader.load(getClass().getResource("FXMLVeureGrup.fxml"));
 		PenPalsMain.border_pane_main.setCenter(pantalla_veure_grup);
@@ -121,30 +164,26 @@ public class ControllerMain implements Initializable {
 		
 		
 		PopOver popover = new PopOver(vbox);
-		popover.setArrowLocation(PopOver.ArrowLocation.TOP_LEFT);
+		popover.setArrowLocation(PopOver.ArrowLocation.TOP_CENTER);
 		popover.show(menuNotaRapida);
 	}
 	
 	
-	@FXML public void afegirUsuariRapid (ActionEvent event) {
-		/*Components del popOver*/
-		TextField campo = new TextField();   
-		Label text = new Label("Afegir usuari");
-		text.setPadding(new Insets(10, 10, 30, 10)); 
-		campo.setPadding(new Insets(10, 10, 10, 10));
-		
-		Button popoverButton = new Button("Enviar sol·licitud");
-	
-		VBox vbox = new VBox(text,campo,popoverButton);
-		vbox.setSpacing(10);
-		
-		PopOver popover = new PopOver(gridPaneMenuAfegirUsuari);
+	@FXML public void afegirUsuariRapid (ActionEvent event) throws IOException {
+		GridPane gridpane = FXMLLoader.load(getClass().getResource("FXMLMenuAfegirUsuari.fxml"));
+
+		PopOver popover = new PopOver();
+		popover.setContentNode(gridpane);
 		popover.setArrowLocation(PopOver.ArrowLocation.TOP_LEFT);
 		popover.show(menuAfegirUsuari);
-
 	}
 	
-     
+	@FXML TextField idUsuariEnviarSolicitud;
+	
+	@FXML public void enviarSolicitudAmistat(ActionEvent e) throws Exception {
+		connexio.enviarSolicitudAmistat(idUsuariEnviarSolicitud.getText());
+	}
+	
      
 	/**
 	 * Surt del programa

@@ -7,6 +7,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.regex.Pattern;
 
 import org.apache.commons.validator.routines.EmailValidator;
@@ -45,6 +47,25 @@ public class Connexio {
 	
 	public static String getUsuari() {
 		return Connexio.usuariConnectat;
+	}
+	
+	public static List<String> veureNotificacions() {
+		List<String> llistaNotificacions = new LinkedList<>();
+
+		try {
+			stmt = conn.createStatement();
+			ResultSet rs;
+			rs = stmt.executeQuery("SELECT \"idUsuari1\" FROM \"ContactesUsuari\" WHERE \"idUsuari2\"='" + Connexio.getUsuari() + "' AND mutual=false");		
+	
+		while (rs.next()) {
+			llistaNotificacions.add(rs.getString("idUsuari1"));
+		}
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+		
+		return llistaNotificacions;
 	}
 	
 	
