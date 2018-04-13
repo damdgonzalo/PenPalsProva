@@ -6,19 +6,20 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+
 public class LogInMain extends Application {
 	
-	static Scene main_scene;
-	static Stage stage;
+	public static Scene main_scene;
+	public static Stage stage;
 	public static Connexio connexio;
 	     
      @Override
      public void start(Stage stage) throws Exception {
     	 //connexio = new Connexio("localhost", "5432", "postgres", "root");
-    	 connexio = new Connexio("192.168.17.219", "5432", "postgres", "root");
+    	 connexio = new Connexio("localhost", "5432", "postgres", "root");
     	 
     	 LogInMain.stage = stage;
-    	 Parent login_root = FXMLLoader.load(getClass().getResource("FXMLLogIn.fxml"));
+    	 Parent login_root = FXMLLoader.load(getClass().getResource("/view/FXMLLogIn.fxml"));
             		
     	 main_scene = new Scene(login_root);
           
@@ -28,9 +29,6 @@ public class LogInMain extends Application {
      }
      
 
-     /**
-      * @param args the command line arguments
-      */
      public static void main(String[] args) {
           launch(args);
      }  

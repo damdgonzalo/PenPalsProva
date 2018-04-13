@@ -7,10 +7,10 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.fx.ide.jdt.core.JAVAFX_CONTAINER"/>
-	<classpathentry kind="lib" path="/Users/xaviercastillo/Documents/GitHub/PenPalsProva/jars/postgresql-42.2.2.jar"/>
-	<classpathentry kind="lib" path="/Users/xaviercastillo/Documents/GitHub/PenPalsProva/jars/Apache Commons Validator/commons-validator-1.6.jar"/>
-	<classpathentry kind="lib" path="/Users/xaviercastillo/Documents/GitHub/PenPalsProva/jars/enviar mails Java/activation.jar"/>
-	<classpathentry kind="lib" path="/Users/xaviercastillo/Documents/GitHub/PenPalsProva/jars/enviar mails Java/javax.mail.jar"/>
-	<classpathentry kind="lib" path="/Users/xaviercastillo/Desktop/controlsfx-8/controlsfx-8.40.14.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Dana/Desktop/jars/postgresql-42.2.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Dana/Desktop/jars/Apache Commons Validator/commons-validator-1.6.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Dana/Desktop/jars/enviar mails Java/activation.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Dana/Desktop/jars/enviar mails Java/javax.mail.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Dana/Desktop/jars/controlsfx-8.40.14.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

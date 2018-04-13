@@ -10,10 +10,10 @@ import javafx.stage.Stage;
 
 public class PenPalsMain extends Application {
 	
-	static Stage stage;
-	static Scene main_scene;
-	static Scene login_scene;
-	static BorderPane border_pane_main;
+	public static Stage stage;
+	public static Scene main_scene;
+	public static Scene login_scene;
+	public static BorderPane border_pane_main;
      
      @Override
      public void start(Stage primary_stage) throws Exception {

@@ -1,4 +1,4 @@
-package penpalsprova;
+package controller;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -13,6 +13,9 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
+import penpalsprova.ConnexioLogIn;
+import penpalsprova.LogInMain;
+import penpalsprova.PenPalsMain;
 
 public class ControllerRegistrat {
 	ConnexioLogIn connexio = ControllerLogIn.connexio;
@@ -38,7 +41,7 @@ public class ControllerRegistrat {
 	}
 	
 	private void iniciarSessio() throws Exception {
-		BorderPane root = FXMLLoader.load(getClass().getResource("FXMLMain.fxml")); //finestra que volem obrir
+		BorderPane root = FXMLLoader.load(getClass().getResource("/view/FXMLMain.fxml")); //finestra que volem obrir
 		PenPalsMain.border_pane_main = root;
 		
 		Stage main_stage = LogInMain.stage;
@@ -46,7 +49,7 @@ public class ControllerRegistrat {
 		PenPalsMain.main_scene = scene;
 		
 		//al centre mostrarà la pantalla principal
-		GridPane pantalla_principal = FXMLLoader.load(getClass().getResource("FXMLPantallaPrincipal.fxml"));
+		GridPane pantalla_principal = FXMLLoader.load(getClass().getResource("/view/FXMLPantallaPrincipal.fxml"));
         root.setCenter(pantalla_principal);
 		
 		main_stage.setScene(scene);
@@ -54,7 +57,7 @@ public class ControllerRegistrat {
 	
 	
 	@FXML private void veureLogIn(ActionEvent e) throws Exception {
-		GridPane root = FXMLLoader.load(getClass().getResource("FXMLLogIn.fxml")); //finestra que volem obrir
+		GridPane root = FXMLLoader.load(getClass().getResource("/view/FXMLLogIn.fxml")); //finestra que volem obrir
 		
 		Stage main_stage = LogInMain.stage;
 		Scene scene = new Scene(root);

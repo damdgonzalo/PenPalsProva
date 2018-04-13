@@ -1,4 +1,4 @@
-package penpalsprova;
+package controller;
 
 import java.io.IOException;
 
@@ -10,12 +10,12 @@ import javafx.scene.layout.GridPane;
 public class ControllerVeureUsuari {
 
 	@FXML public void veure_grup(ActionEvent event) throws IOException {
-		GridPane pantalla_principal = FXMLLoader.load(getClass().getResource("FXMLVeureGrup.fxml"));
+		GridPane pantalla_principal = FXMLLoader.load(getClass().getResource("/view/FXMLVeureGrup.fxml"));
 		PenPalsMain.border_pane_main.setCenter(pantalla_principal);
 	}
 	
 	@FXML public void editar_perfil(ActionEvent event) throws IOException {
-		GridPane pantalla_principal = FXMLLoader.load(getClass().getResource("FXMLEditarPerfil.fxml"));
+		GridPane pantalla_principal = FXMLLoader.load(getClass().getResource("/view/FXMLEditarPerfil.fxml"));
 		PenPalsMain.border_pane_main.setCenter(pantalla_principal);
 	}
 	

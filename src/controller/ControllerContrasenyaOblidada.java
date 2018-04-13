@@ -1,4 +1,4 @@
-package penpalsprova;
+package controller;
 
 import java.util.Date;
 import java.util.Properties;
