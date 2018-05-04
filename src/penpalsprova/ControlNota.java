@@ -1,5 +1,7 @@
 package penpalsprova;
 
+import java.io.IOException;
+
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.BorderPane;
@@ -15,8 +17,14 @@ public class ControlNota extends BorderPane {
 	
 	public ControlNota() {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/ControlNota.fxml"));
-		loader.setRoot(this);
+		//loader.setRoot(this);
 		loader.setController(this);
+		
+		try {
+			loader.load();
+        } catch (IOException exception) {
+            throw new RuntimeException(exception);
+        }
 	}
 	
 	public String getTitol() {return titol.getText();}

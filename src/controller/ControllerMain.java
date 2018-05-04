@@ -9,6 +9,8 @@ import org.controlsfx.control.PopOver;
 
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -19,12 +21,14 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import penpalsprova.Connexio;
 import penpalsprova.ConnexioContactes;
 import penpalsprova.ConnexioGrups;
+import penpalsprova.ControlNota;
 import penpalsprova.LogInMain;
 import penpalsprova.PenPalsMain;
 
@@ -58,28 +62,68 @@ public class ControllerMain implements Initializable {
 	 * Mostra una llista amb tots els contactes que té l'usuari connectat
 	 * @throws Exception
 	 */
-	public void carregarLlistaContactes() throws Exception {
-		List<String> contactes = connexio.getContactesUsuari();
-		
-		for (int i=0; i<contactes.size(); i++) {
-			Label lb = new Label(contactes.get(i));
-			llistaContactes.add(lb, 0, i);
-		}
-		
-		llistaContactes.add(new Label("   + Afegir contacte"), 0, contactes.size());
+	public void carregarLlistaContactes() {
+		try {
+			List<String> contactes;
+			contactes = connexio.getContactesUsuari();
+			
+			for (int i=0; i<contactes.size(); i++) {
+				Label lb = new Label(contactes.get(i));
+				llistaContactes.add(lb, 0, i);
+			}
+			
+			llistaContactes.add(new Label("   + Afegir contacte"), 0, contactes.size());
+		} catch (Exception ignored) {}
 	}
 	
+	
+	/**
+	 * Mostra una llista amb totes les notificacions que hi han:
+	 * sol·licituds d'amistat, notes noves, notes editades...
+	 * @param e
+	 * @throws Exception
+	 */
 	@FXML public void mostrarNotificacions(ActionEvent e) throws Exception {
-		List<String> llistaNotificacions = Connexio.veureNotificacions();
+		
+		//mostra si hi ha alguna sol·licitud d'amistat
+		List<String> llistaNotificacions = connexio.veureSolicitudsAmistat();
 		
 		VBox llista = new VBox();
+		
 		for(String notificacio : llistaNotificacions) {
+			VBox solicitudAmistat = new VBox();
+			
 			Label text = new Label(notificacio);
-			//Button popoverButton = new Button("Guardar");
 			text.setPadding(new Insets(10, 10, 30, 10));
 			
-			llista.getChildren().add(text);
+			HBox botons = new HBox(); //botons d'acceptar i declinar
+			Button btAcceptar = new Button("Acceptar");
+			Button btDeclinar = new Button("Declinar");
+			botons.getChildren().addAll(btAcceptar, btDeclinar);
+			
+			solicitudAmistat.getChildren().addAll(text, botons);
+			
+			llista.getChildren().add(solicitudAmistat);
+			
+			btAcceptar.setOnAction(new EventHandler() {
+				@Override
+				public void handle(Event e) {
+					connexio.acceptarSolicitudAmistat(text.getText());
+					llistaContactes.getChildren().clear();
+					carregarLlistaContactes();
+					llista.getChildren().remove(solicitudAmistat);
+				}
+			});
+			
+			btDeclinar.setOnAction(new EventHandler() {
+				@Override
+				public void handle(Event e) {
+					connexio.declinarSolicitudAmistat(text.getText());
+					llista.getChildren().remove(solicitudAmistat);
+				}
+			});
 		}
+			
 		llista.setSpacing(10);
 		
 		

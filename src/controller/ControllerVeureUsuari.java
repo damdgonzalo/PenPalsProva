@@ -6,6 +6,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.GridPane;
+import penpalsprova.PenPalsMain;
 
 public class ControllerVeureUsuari {
 
@@ -18,5 +19,4 @@ public class ControllerVeureUsuari {
 		GridPane pantalla_principal = FXMLLoader.load(getClass().getResource("/view/FXMLEditarPerfil.fxml"));
 		PenPalsMain.border_pane_main.setCenter(pantalla_principal);
 	}
-	
 }

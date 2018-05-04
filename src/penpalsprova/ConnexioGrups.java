@@ -35,7 +35,7 @@ public class ConnexioGrups {
 			contactes.add(rs.getString("nom"));
 		}
 		
-		stmt = conn.createStatement();
+		//stmt = conn.createStatement();
 		
 		return contactes;
 	}
