@@ -19,6 +19,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
@@ -41,12 +42,14 @@ public class ControllerMain implements Initializable {
 	@FXML GridPane llistaContactes;
 	@FXML GridPane llistaGrups;
 	
-	@FXML Button menuNotaRapida;
-	@FXML Button menuAfegirUsuari;
-	@FXML Button menuNotificacions;
-	
+	@FXML ImageView menuNotaRapida;
+	@FXML ImageView menuAfegirUsuari;
+	@FXML ImageView menuNotificacions;
+
 	
 	@FXML GridPane gridPaneMenuAfegirUsuari;
+	
+	
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {
 		try {
@@ -59,7 +62,7 @@ public class ControllerMain implements Initializable {
 	
 	
 	/**
-	 * Mostra una llista amb tots els contactes que té l'usuari connectat
+	 * Mostra una llista amb tots els contactes que l'usuari connectat ha afegit
 	 * @throws Exception
 	 */
 	public void carregarLlistaContactes() {
@@ -79,13 +82,13 @@ public class ControllerMain implements Initializable {
 	
 	/**
 	 * Mostra una llista amb totes les notificacions que hi han:
-	 * sol·licituds d'amistat, notes noves, notes editades...
+	 * solÂ·licituds d'amistat, notes noves, notes editades...
 	 * @param e
 	 * @throws Exception
 	 */
-	@FXML public void mostrarNotificacions(ActionEvent e) throws Exception {
+	@FXML public void mostrarNotificacions(Event e) throws Exception {
 		
-		//mostra si hi ha alguna sol·licitud d'amistat
+		//mostra si hi ha alguna solï¿½licitud d'amistat
 		List<String> llistaNotificacions = connexio.veureSolicitudsAmistat();
 		
 		VBox llista = new VBox();
@@ -133,22 +136,23 @@ public class ControllerMain implements Initializable {
 	}
 	
 	/**
-	 * Mostra els detalls d'una nota en la que s'ha fet click
+	 * Mostra al MenÃº Lateral/Grups un llistat amb els grups als qual pertany l'usuari
+	 * Com a Ãºltim element de la llista, hi ha l'opciÃ³ de crear un nou grup
 	 * @param event
 	 * @throws IOException
 	 */
 	public void carregarGrups() throws Exception {
-		List<String> contactes = connexioGrups.getContactesUsuari();
+		List<String> grups = connexioGrups.getGrupsUsuari();
 		
-		for(int i = 0; i<contactes.size(); i++) {
-			Label lb = new Label(contactes.get(i));
+		for(int i = 0; i<grups.size(); i++) {
+			Label lb = new Label(grups.get(i));
 			llistaGrups.add(lb, 0, i);
 		}
 		
-		llistaGrups.add(new Label("   + Afegir grup"), 0, contactes.size());
+		Connexio.setGrups(grups); //ara la llista de grups estÃ  disponible per totes les classes
+		llistaGrups.add(new Label("   + Afegir grup"), 0, grups.size());
 	}
 	
-	@FXML javafx.scene.control.Button notaRapida;
 	
 	@FXML public void veure_nota(MouseEvent event) throws IOException {
 		GridPane pantalla_veure_nota = FXMLLoader.load(getClass().getResource("/view/FXMLVeureNota.fxml"));
@@ -160,17 +164,17 @@ public class ControllerMain implements Initializable {
 	 * @param event
 	 * @throws IOException
 	 */
-	@FXML public void veure_principal(ActionEvent event) throws IOException {
+	@FXML public void veure_principal(Event event) throws IOException {
 		GridPane pantalla_principal = FXMLLoader.load(getClass().getResource("/view/FXMLPantallaPrincipal.fxml"));
 		PenPalsMain.border_pane_main.setCenter(pantalla_principal);
 	}
 	
 	/**
-	 * Tenca la sessió actual i torna a la pantalla d'inici
+	 * Tenca la sessiï¿½ actual i torna a la pantalla d'inici
 	 * @param event
 	 * @throws IOException
 	 */
-	@FXML public void tencar_sessio(ActionEvent event) throws IOException {
+	@FXML public void tencar_sessio(Event event) throws IOException {
 		GridPane root = FXMLLoader.load(getClass().getResource("/view/FXMLLogIn.fxml")); //finestra que volem obrir
 		
 		Stage main_stage = LogInMain.stage;
@@ -182,11 +186,11 @@ public class ControllerMain implements Initializable {
 	}
 	
 	/**
-	 * Mostra informació sobre un grup en el que s'ha fet click
+	 * Mostra informaciï¿½ sobre un grup en el que s'ha fet click
 	 * @param event
 	 * @throws IOException
 	 */
-	@FXML public void veure_grup(MouseEvent event) throws IOException {
+	@FXML public void veure_grup(Event event) throws IOException {
 		GridPane pantalla_veure_grup = FXMLLoader.load(getClass().getResource("/view/FXMLVeureGrup.fxml"));
 		PenPalsMain.border_pane_main.setCenter(pantalla_veure_grup);
 		
@@ -195,11 +199,11 @@ public class ControllerMain implements Initializable {
      
      
 	/**
-	 * Obre en una finestra diferent a l'actual la pantalla "About" amb informaciï¿½ sobre el programa
+	 * Obre en una finestra diferent a l'actual la pantalla "About" amb informaciÃ³ sobre el programa
 	 * @param event
 	 * @throws Exception
 	 */
-	@FXML public void obrir_about(ActionEvent event) throws Exception {
+	@FXML public void obrir_about(Event event) throws Exception {
 		GridPane root = FXMLLoader.load(getClass().getResource("/view/FXMLAbout.fxml")); //finestra que volem obrir
     	 
 		Scene scene = new Scene(root);
@@ -215,11 +219,11 @@ public class ControllerMain implements Initializable {
 	}
 	
 	/**
-	 * Obre en una finestra diferent a l'actual la pantalla "About" amb informaciï¿½ sobre el programa
+	 * Obre en una finestra diferent a l'actual la pantalla "About" amb informaciÃ³ sobre el programa
 	 * @param event
 	 * @throws Exception
 	 */
-	@FXML public void obrir_notaRapida(ActionEvent event) throws Exception {
+	@FXML public void obrir_notaRapida(Event event) throws Exception {
 	
     	/*Components del popOver*/
 		TextField campo = new TextField();   
@@ -238,23 +242,23 @@ public class ControllerMain implements Initializable {
 	}
 	
 
-	@FXML public void afegirUsuariRapid (ActionEvent event) throws IOException {
+	@FXML public void afegirUsuariRapid (Event event) throws IOException {
 		GridPane gridpane = FXMLLoader.load(getClass().getResource("/view/FXMLMenuAfegirUsuari.fxml"));
 
 		PopOver popover = new PopOver();
 		popover.setContentNode(gridpane);
-		/*Components del popOver*/
+		//Components del PopOver
 		TextField campo = new TextField();   
 		Label text = new Label("Afegir usuari");
 		text.setPadding(new Insets(10, 10, 30, 10)); 
 		campo.setPadding(new Insets(10, 10, 10, 10));
 		
-		Button popoverButton = new Button("Enviar sol·licitud");
+		Button popoverButton = new Button("Enviar solÂ·licitud");
 	
 		VBox vbox = new VBox(text,campo,popoverButton);
 		vbox.setSpacing(10);
 		
-		popover.setArrowLocation(PopOver.ArrowLocation.TOP_LEFT);
+		popover.setArrowLocation(PopOver.ArrowLocation.TOP_CENTER);
 		popover.show(menuAfegirUsuari);
 	}
 	

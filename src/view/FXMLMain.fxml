@@ -14,31 +14,65 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="581.0" prefWidth="1007.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ControllerMain">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="581.0" prefWidth="1007.0" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ControllerMain">
    <top>
       <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="7.0" prefWidth="703.0" BorderPane.alignment="CENTER">
          <children>
             <HBox alignment="TOP_RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="25.0" prefWidth="918.0" HBox.hgrow="ALWAYS">
                <children>
-                  <ImageView fitHeight="15.0" fitWidth="15.0" mouseTransparent="true" pickOnBounds="true">
-                     <image>
-                        <Image url="@../../../PenPals_imatges/lupa_buscar.png" />
-                     </image>
-                     <HBox.margin>
-                        <Insets right="3.0" top="5.0" />
-                     </HBox.margin>
-                  </ImageView>
                   <TextField prefHeight="25.0" prefWidth="264.0" promptText="Buscar...">
                      <HBox.margin>
-                        <Insets right="50.0" />
+                        <Insets right="50.0" top="7.0" />
                      </HBox.margin>
                   </TextField>
-                  <Button fx:id="menuNotaRapida" mnemonicParsing="false" onAction="#obrir_notaRapida" prefWidth="85.0" text="Nova Nota" />
-                  <Button mnemonicParsing="false" prefWidth="85.0" text="Configuració" />
-                  <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="85.0" text="Crear grup" />
-                  <Button fx:id="menuAfegirUsuari" mnemonicParsing="false" onAction="#afegirUsuariRapid" prefWidth="85.0" text="Afegir usuari" />
-                  <Button fx:id="menuNotificacions" mnemonicParsing="false" onAction="#mostrarNotificacions" prefWidth="85.0" text="Notificacions" />
-                  <Button mnemonicParsing="false" prefWidth="85.0" text="Usuari" />
+                  <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../Desktop/carpeta%20sin%20título/Projecte%20PenPals/icones/008-settings-work-tool.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets right="15.0" top="7.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <ImageView fx:id="menuNotaRapida" fitHeight="23.0" fitWidth="23.0" onMouseClicked="#obrir_notaRapida" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../Desktop/carpeta%20sin%20título/Projecte%20PenPals/icones/006-new-document.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets right="15.0" top="7.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../Desktop/carpeta%20sin%20título/Projecte%20PenPals/icones/005-create-group-button.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets right="15.0" top="5.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <ImageView fx:id="menuAfegirUsuari" fitHeight="25.0" fitWidth="25.0" onMouseClicked="#afegirUsuariRapid" pickOnBounds="true" preserveRatio="true">
+                     <HBox.margin>
+                        <Insets right="15.0" top="7.0" />
+                     </HBox.margin>
+                     <image>
+                        <Image url="@../../../../../Desktop/carpeta%20sin%20título/Projecte%20PenPals/icones/007-add-user-button.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="menuNotificacions" fitHeight="25.0" fitWidth="25.0" onMouseClicked="#mostrarNotificacions" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../Desktop/carpeta%20sin%20título/Projecte%20PenPals/icones/010-notification.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets right="15.0" top="7.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <ImageView fitHeight="25.0" fitWidth="25.0" mouseTransparent="true" pickOnBounds="true">
+                     <image>
+                        <Image url="@../../../../../Desktop/carpeta%20sin%20título/Projecte%20PenPals/icones/009-man-user.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets right="15.0" top="7.0" />
+                     </HBox.margin>
+                  </ImageView>
                </children>
             </HBox>
          </children>
@@ -58,7 +92,6 @@
           <RowConstraints maxHeight="-Infinity" minHeight="25.0" prefHeight="25.0" vgrow="NEVER" />
         </rowConstraints>
          <children>
-            <Button maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#tencar_sessio" prefHeight="66.0" prefWidth="178.0" text="Tencar sessió" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS" />
             <Accordion maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="0.0" prefWidth="178.0" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS">
               <panes>
                 <TitledPane animated="false" text="Notes personals">
@@ -173,6 +206,26 @@
               </panes>
             </Accordion>
             <Button maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#veure_principal" prefHeight="79.0" prefWidth="178.0" text="INICI" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS" />
+            <HBox onMouseClicked="#tencar_sessio" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="2">
+               <children>
+                  <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../Desktop/carpeta%20sin%20título/Projecte%20PenPals/icones/001-logout.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets bottom="10.0" left="10.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <Label ellipsisString="Tencar sessió" prefHeight="31.0" prefWidth="159.0" text="Tencar sessió">
+                     <padding>
+                        <Insets left="20.0" />
+                     </padding>
+                     <HBox.margin>
+                        <Insets bottom="10.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+            </HBox>
          </children>
       </GridPane>
    </left>

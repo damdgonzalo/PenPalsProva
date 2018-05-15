@@ -15,18 +15,15 @@ public class ConnexioGrups {
 	public ConnexioGrups() throws Exception {
 		conn = Connexio.conn;
 		stmt = Connexio.stmt;
-		System.out.println("Connexio contactes");
 	}
 	
 //----------------------------------------------------------------------------------------------------------------------
 	
 	/**
-	 * Retorna una llista amb el nom dels contactes que t� un usuari
-	 * @param usuari ID de l'usuari del qual volem veure els contactes
-	 * @return Llista amb els ID d'usuari dels contactes
-	 * @throws Exception
+	 * Retorna una llista amb el nom dels grups als qual pertany l'usuari connectat
+	 * @return Llista amb els grups als que està l'usuari
 	 */
-	public List<String> getContactesUsuari() throws Exception {
+	public List<String> getGrupsUsuari() throws Exception {
 		stmt = conn.createStatement();
 		ResultSet rs = stmt.executeQuery("SELECT nom FROM \"Grups\" as g LEFT JOIN \"GrupsUsuaris\" as gu ON g.\"idGrup\"=gu.\"idGrup\" WHERE \"idUsuari\" ='"+ Connexio.getUsuari() + "'");
 		

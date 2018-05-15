@@ -18,13 +18,12 @@ public class ConnexioContactes {
 	public ConnexioContactes() throws Exception {
 		conn = Connexio.conn;
 		stmt = Connexio.stmt;
-		System.out.println("Connexio contactes");
 	}
 	
 //----------------------------------------------------------------------------------------------------------------------
 	
 	/**
-	 * Retorna una llista amb el nom dels contactes que té un usuari
+	 * Retorna una llista amb el nom dels contactes que tï¿½ un usuari
 	 * @param usuari ID de l'usuari del qual volem veure els contactes
 	 * @return Llista amb els ID d'usuari dels contactes
 	 * @throws Exception
@@ -50,7 +49,7 @@ public class ConnexioContactes {
 	
 	
 	/**
-	 * Envia a un usuari una sol·licitud d'amistat
+	 * Envia a un usuari una solï¿½licitud d'amistat
 	 * @param idUsuari ID de l'usuari al que es vol agregar com a contacte
 	 * @throws Exception
 	 */
@@ -61,8 +60,8 @@ public class ConnexioContactes {
 	
 	
 	/**
-	 * Retorna una llista amb sol·licituds d'amistat
-	 * @return Llista amb el nom de qui ha enviat la sol·licitud
+	 * Retorna una llista amb solï¿½licituds d'amistat
+	 * @return Llista amb el nom de qui ha enviat la solï¿½licitud
 	 */
 	public List<String> veureSolicitudsAmistat() {
 		List<String> llistaNotificacions = new LinkedList<>();

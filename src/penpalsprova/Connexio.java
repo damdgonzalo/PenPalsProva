@@ -21,14 +21,16 @@ public class Connexio {
 	public static Connection conn;
 	public static Statement stmt;
 	private static String usuariConnectat;
+	private static List<String> grups;
 	
 	public Connexio(String ip, String port, String usuari, String contrasenya) throws Exception {
 		Class.forName("org.postgresql.Driver");
 		
 		conn = DriverManager.getConnection("jdbc:postgresql://" + ip + ":" + port + "/penpals", usuari, contrasenya);
 		conn.setAutoCommit(true);
-		if (conn!=null) System.out.println("-> ConnexiÛ establerta amb la base de dades.");
-		else System.out.println("baiabaia");
+		if (conn!=null) System.out.println("-> Connexi√≥ establerta amb la base de dades.");
+		
+		grups = new LinkedList<>();
 	}
 	
 	public void close() {
@@ -48,4 +50,10 @@ public class Connexio {
 	public static String getUsuari() {
 		return Connexio.usuariConnectat;
 	}
+	
+	public static void setGrups(List<String> grups) {
+		Connexio.grups = grups;
+	}
+	
+	public static List<String> getGrups() {return grups;}
 }
