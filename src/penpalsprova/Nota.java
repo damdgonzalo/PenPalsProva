@@ -5,7 +5,7 @@ import java.util.List;
 public class Nota {
 
 	private int id;
-	private String colorNota; //color del grup al que pertany la nota
+	private Grup grup; //grup al qual pertany la nota
 	private String titol;
 	private String text;
 	private String dataPublicacio;
@@ -25,9 +25,9 @@ public class Nota {
 	public int getId() {return id;}
 	public void setId(int id) {this.id = id;}
 	
-	public String getColorNota() {return colorNota;}
-	public void setColorNota(String colorNota) {this.colorNota = colorNota;}
-	
+	public Grup getGrup() {return grup;}
+	public void setGrup(Grup grup) {this.grup = grup;}
+		
 	public String getTitol() {
 		return titol;
 	}

@@ -30,6 +30,7 @@ import penpalsprova.Connexio;
 import penpalsprova.ConnexioContactes;
 import penpalsprova.ConnexioGrups;
 import penpalsprova.ControlNota;
+import penpalsprova.Grup;
 import penpalsprova.LogInMain;
 import penpalsprova.PenPalsMain;
 
@@ -142,10 +143,10 @@ public class ControllerMain implements Initializable {
 	 * @throws IOException
 	 */
 	public void carregarGrups() throws Exception {
-		List<String> grups = connexioGrups.getGrupsUsuari();
+		List<Grup> grups = connexioGrups.getGrupsUsuari();
 		
 		for(int i = 0; i<grups.size(); i++) {
-			Label lb = new Label(grups.get(i));
+			Label lb = new Label(grups.get(i).getNom());
 			llistaGrups.add(lb, 0, i);
 		}
 		

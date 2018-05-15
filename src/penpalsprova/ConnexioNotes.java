@@ -13,15 +13,13 @@ public class ConnexioNotes{
 	private int comptadorNotes;
 	private int comptadorNotesVell;
 	
-	private List<String> grups;
-	private String usuariConnectat;
-
+	private List<Integer> grups;
 	
 	public ConnexioNotes() throws Exception {
 		conn = Connexio.conn;
 		stmt = Connexio.stmt;
 		
-		grups = Connexio.getGrups();
+		grups = Connexio.getIdGrups();
 	
 		comptadorNotes = comptarNotesActuals();
 		comptadorNotesVell = comptadorNotes;
@@ -49,7 +47,6 @@ public class ConnexioNotes{
 		nota.setDataUltModificacio(rs.getString("ultimaModificacio"));
 		nota.setText(rs.getString("cos"));
 		nota.setAutor(rs.getString("autor"));
-		nota.setColorNota(rs.getString("color"));
 		
 		return nota;
 	}
@@ -63,17 +60,18 @@ public class ConnexioNotes{
 	 */
 	public List<Nota> getNotes() throws Exception {
 				
-		String query = "SELECT g.\"idGrup\", n.*, gu.\"color\" FROM \"GrupsNota\" g"
+		String query = "SELECT g.\"idGrup\", gr.\"nom\" AS \"nomGrup\", n.*, gu.\"color\" FROM \"GrupsNota\" g"
 					 + " INNER JOIN \"Notes\" n ON g.\"idNota\" = n.\"idNota\""
 					 + " INNER JOIN \"GrupsUsuaris\" gu ON gu.\"idGrup\"=g.\"idGrup\""
-					 + " WHERE gu.\"idUsuari\"='" + Connexio.getUsuari() + "' AND ";
+					 + " INNER JOIN \"Grups\" gr ON gr.\"idGrup\"=g.\"idGrup\""
+					 + " WHERE gu.\"idUsuari\"='" + Connexio.getUsuari() + "' AND (";
 	
 		for (int i=0; i<grups.size(); i++) {
 			
-			if (i==grups.size()-1) query += "g.\"idGrup\" = (SELECT \"idGrup\" FROM \"Grups\" WHERE \"nom\"='" + grups.get(i) + "')";
-			else query += "g.\"idGrup\" = (SELECT \"idGrup\" FROM \"Grups\" WHERE \"nom\"='" + grups.get(i) + "') OR ";
+			if (i==grups.size()-1) query += "g.\"idGrup\" = " + grups.get(i) + ")";
+			else query += "g.\"idGrup\" =" + grups.get(i) + "OR ";
 		}
-			
+					
 		stmt = conn.createStatement();
 		ResultSet rs = stmt.executeQuery(query);
 		
@@ -82,12 +80,13 @@ public class ConnexioNotes{
 		while (rs.next()) {
 			Nota nota = new Nota();
 			nota.setId(Integer.parseInt(rs.getString("idNota")));
+			nota.setGrup(new Grup());
 			nota.setTitol(rs.getString("titol"));
 			nota.setDataPublicacio(rs.getString("dataCreacio"));
 			nota.setDataUltModificacio(rs.getString("ultimaModificacio"));
 			nota.setText(rs.getString("cos"));
 			nota.setAutor(rs.getString("autor"));
-			nota.setColorNota(rs.getString("color"));
+			nota.setGrup(ConnexioGrups.getGrup(Integer.parseInt(rs.getString("idGrup"))));
 			
 			llistaNotes.add(nota);
 		}
@@ -110,8 +109,8 @@ public class ConnexioNotes{
 		//busca notes noves a cada grup
 		for (int i=0; i<grups.size(); i++) {
 			
-			if (i==grups.size()-1) query += "g.\"idGrup\" = (SELECT \"idGrup\" FROM \"Grups\" WHERE \"nom\"='" + grups.get(i) + "')";
-			else query += "g.\"idGrup\" = (SELECT \"idGrup\" FROM \"Grups\" WHERE \"nom\"='" + grups.get(i) + "') OR ";
+			if (i==grups.size()-1) query += "g.\"idGrup\" =" + grups.get(i);
+			else query += "g.\"idGrup\"=" + grups.get(i) + " OR ";
 		}
 		
 		query += " ORDER BY n.\"idNota\" DESC LIMIT " + (comptarNotesActuals() - comptadorNotesVell);
@@ -132,6 +131,8 @@ public class ConnexioNotes{
 			notaNova.setDataUltModificacio(rs.getString("ultimaModificacio"));
 			notaNova.setText(rs.getString("cos"));
 			notaNova.setAutor(rs.getString("autor"));
+			
+			notaNova.setGrup(ConnexioGrups.getGrup(Integer.parseInt(rs.getString("idGrup"))));
 			
 			llistaNotesNoves.add(notaNova);
 			comptadorNotes++;
@@ -168,8 +169,8 @@ public class ConnexioNotes{
 		
 		for (int i=0; i<grups.size(); i++) {
 			
-			if (i==grups.size()-1) query += "\"idGrup\" = (SELECT \"idGrup\" FROM \"Grups\" WHERE \"nom\"='" + grups.get(i) + "')";
-			else query += "\"idGrup\" = (SELECT \"idGrup\" FROM \"Grups\" WHERE \"nom\"='" + grups.get(i) + "') OR ";
+			if (i==grups.size()-1) query += "\"idGrup\" = " + grups.get(i);
+			else query += "\"idGrup\" =" + grups.get(i) + " OR ";
 		}
 		
 		stmt = conn.createStatement();
@@ -181,25 +182,5 @@ public class ConnexioNotes{
 		return notesInicials;
 	}
 	
-//----------------------------------------------------------------------------------------------------------------------
-	
-
-	/**
-	 * Retorna una llista amb els noms dels grups als quals pertany l'usuari connectat
-	 * @return Llista amb noms de grups existents als que pertany l'usuari
-	 */
-	/*private List<String> getGrupsUsuari() throws Exception {
-		String query = "SELECT gr.\"nom\" FROM \"Grups\" gr"
-					 + " INNER JOIN \"GrupsUsuaris\" gu ON gr.\"idGrup\"=gu.\"idGrup\""
-					 + " WHERE gu.\"idUsuari\"='" + usuariConnectat + "'";
-		
-		stmt = conn.createStatement();
-		ResultSet rs = stmt.executeQuery(query);
-		
-		List<String> grups = new LinkedList<>();
-		while (rs.next()) grups.add(rs.getString("nom"));
-		
-		return grups;
-	}*/
 
 }

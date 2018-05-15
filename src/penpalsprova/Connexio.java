@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.regex.Pattern;
@@ -21,7 +22,8 @@ public class Connexio {
 	public static Connection conn;
 	public static Statement stmt;
 	private static String usuariConnectat;
-	private static List<String> grups;
+	//private static List<Grup> grups;
+	private static HashMap<Integer,Grup> grups;
 	
 	public Connexio(String ip, String port, String usuari, String contrasenya) throws Exception {
 		Class.forName("org.postgresql.Driver");
@@ -30,7 +32,7 @@ public class Connexio {
 		conn.setAutoCommit(true);
 		if (conn!=null) System.out.println("-> Connexió establerta amb la base de dades.");
 		
-		grups = new LinkedList<>();
+		grups = new HashMap<>();
 	}
 	
 	public void close() {
@@ -51,9 +53,27 @@ public class Connexio {
 		return Connexio.usuariConnectat;
 	}
 	
-	public static void setGrups(List<String> grups) {
-		Connexio.grups = grups;
+	public static void setGrups(List<Grup> llistaGrups) {
+		for (Grup grupNou: llistaGrups) {
+			grups.put(grupNou.getId(), grupNou);
+		}
 	}
 	
-	public static List<String> getGrups() {return grups;}
+	public static HashMap<Integer,Grup> getGrups() {return grups;}
+	
+	public static List<String> getNomGrups() {
+		List<String> llistaNomsGrups = new LinkedList<>();
+		
+		for (Grup grup : grups.values()) llistaNomsGrups.add(grup.getNom());
+		
+		return llistaNomsGrups;
+	}
+	
+	public static List<Integer> getIdGrups() {
+		List<Integer> llistaId = new LinkedList<>();
+		
+		for (Integer id : grups.keySet()) llistaId.add(id);
+		
+		return llistaId;
+	}
 }

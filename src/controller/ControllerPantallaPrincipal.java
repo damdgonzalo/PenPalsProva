@@ -26,12 +26,13 @@ public class ControllerPantallaPrincipal implements Initializable {
 	
 	ConnexioNotes connexioNotes;
 	@FXML GridPane gridNotes;
+	
+	static Nota notaClickada; //perque quan es fa click a una nota,  ControllerVeureNota pugui saber quina nota ha de mostrar
 
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {
 		try {
 			connexioNotes = new ConnexioNotes();
-			
 			carregarNotes();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -41,7 +42,7 @@ public class ControllerPantallaPrincipal implements Initializable {
 		
 		/*ControlNota nota = new ControlNota();
 		nota.setTitol("Titol");
-		nota.setText("Cos de la nota jhaskdfhsdf");
+		nota.setText("Cos de la nota");
 		nota.setDataCreacio("Avui.");
 		
 		//gridNotes.add(nota,0,0);
@@ -52,7 +53,7 @@ public class ControllerPantallaPrincipal implements Initializable {
 		List<Nota> llistaNotes = connexioNotes.getNotes();
 		
 		for (int i=0; i<llistaNotes.size(); i++) {
-			int idNota = llistaNotes.get(i).getId();
+			Nota notaActual = llistaNotes.get(i);
 			
 			GridPane vistaNota = FXMLLoader.load(getClass().getResource("/view/FXMLNotaMenu.fxml"));
 			Label colorGrup = null;
@@ -64,11 +65,11 @@ public class ControllerPantallaPrincipal implements Initializable {
 		        if (GridPane.getColumnIndex(node)!=null) {
 		        	if (GridPane.getColumnIndex(node)==1) {
 		        		colorGrup = (Label) node;
-		        		colorGrup.setStyle("-fx-text-fill: " + llistaNotes.get(i).getColorNota());
+		        		colorGrup.setStyle("-fx-text-fill: " + llistaNotes.get(i).getGrup().getColorGrup());
 		        	}
 		        	else if (GridPane.getColumnIndex(node)==2) {
 		        		titolNota = (Label) node;
-		        		titolNota.setText(llistaNotes.get(i).getTitol());
+		        		titolNota.setText(llistaNotes.get(i).getTitol() + ".");
 		        	}
 		        	else if (GridPane.getColumnIndex(node)==2) {
 		        		textNota = (Label) node;
@@ -77,17 +78,28 @@ public class ControllerPantallaPrincipal implements Initializable {
 		        }
 			}
 			
-			vistaNota.setOnMouseClicked(e->veureNota(e, idNota));
+			vistaNota.setOnMouseClicked(e->veureNota(e, notaActual));
 			
 			gridNotes.add(vistaNota, 0, i);
 		}
 	}
 	
-	private void veureNota(Event e, int idNota) {
+	/**
+	 * Mostra els detalls d'una nota a la que s'ha fet click
+	 * @param e Click
+	 * @param nota Nota que es vol visualitzar
+	 */
+	private void veureNota(Event e, Nota nota) {
 		try {
-			System.out.println("Veient nota: " + idNota);
+			//FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/FXMLVeureNota.fxml"));
+			//loader.setController(new ControllerVeureNota(nota));
+			
+			//GridPane pantalla_veure_nota = loader.load();
+			
+			notaClickada = nota;
 			GridPane pantalla_veure_nota = FXMLLoader.load(getClass().getResource("/view/FXMLVeureNota.fxml"));
 			PenPalsMain.border_pane_main.setCenter(pantalla_veure_nota);
+			
 		} catch (Exception ignored) {}
 	}
 }

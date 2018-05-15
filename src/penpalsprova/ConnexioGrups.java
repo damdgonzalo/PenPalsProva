@@ -23,18 +23,40 @@ public class ConnexioGrups {
 	 * Retorna una llista amb el nom dels grups als qual pertany l'usuari connectat
 	 * @return Llista amb els grups als que està l'usuari
 	 */
-	public List<String> getGrupsUsuari() throws Exception {
+	public List<Grup> getGrupsUsuari() throws Exception {
 		stmt = conn.createStatement();
-		ResultSet rs = stmt.executeQuery("SELECT nom FROM \"Grups\" as g LEFT JOIN \"GrupsUsuaris\" as gu ON g.\"idGrup\"=gu.\"idGrup\" WHERE \"idUsuari\" ='"+ Connexio.getUsuari() + "'");
+		ResultSet rs = stmt.executeQuery("SELECT g.*, gu.\"color\" FROM \"Grups\" as g LEFT JOIN \"GrupsUsuaris\" as gu ON g.\"idGrup\"=gu.\"idGrup\" WHERE \"idUsuari\" ='"+ Connexio.getUsuari() + "'");
 		
-		List<String> contactes = new LinkedList<>();
+		List<Grup> grups = new LinkedList<>();
 		while (rs.next()) {
-			contactes.add(rs.getString("nom"));
+			Grup grupNou = new Grup();
+			grupNou.setId(Integer.parseInt(rs.getString("idGrup")));
+			grupNou.setNom(rs.getString("nom"));
+			grupNou.setAdministrador(rs.getString("administrador"));
+			grupNou.setDataCreacio(rs.getString("dataCreacio"));
+			grupNou.setColorGrup(rs.getString("color"));
+			
+			//llista de participants
+			Statement stmt2 = conn.createStatement();
+			ResultSet rs2 = stmt2.executeQuery("SELECT \"idUsuari\" FROM \"GrupsUsuaris\" WHERE \"idGrup\"=" + grupNou.getId());
+			while (rs2.next()) grupNou.getParticipants().add(rs2.getString("idUsuari"));
+			rs2.close();
+			stmt2.close();
+			
+			grups.add(grupNou);
 		}
 		
-		//stmt = conn.createStatement();
+		rs.close();
+				
+		return grups;
+	}
+	
+	public static Grup getGrup(int idGrup) {
+		return Connexio.getGrups().get(idGrup);
+	}
+	
+	public static void getGrups() {
 		
-		return contactes;
 	}
 	
 }

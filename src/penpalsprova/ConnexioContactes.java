@@ -47,6 +47,22 @@ public class ConnexioContactes {
 		return contactes;
 	}
 	
+	public Usuari getUsuari(String idUsuari) throws Exception {
+		stmt = conn.createStatement();
+		ResultSet rs = stmt.executeQuery("SELECT * FROM \"Usuaris\" WHERE \"idUsuari\"='" + idUsuari + "'");
+		rs.next();
+		
+		Usuari usuari = new Usuari();
+		usuari.setId(idUsuari);
+		usuari.setNom(rs.getString("nom"));
+		usuari.setCorreu(rs.getString("correu"));
+		usuari.setDataNaixement(rs.getString("dataNaixement"));
+		usuari.setTelefon(rs.getString("telefon"));
+		usuari.setMobil(rs.getString("movil"));
+		
+		return usuari;
+	}
+	
 	
 	/**
 	 * Envia a un usuari una sol�licitud d'amistat
@@ -81,7 +97,6 @@ public class ConnexioContactes {
 	}
 	
 	public void acceptarSolicitudAmistat(String usuari) {
-		System.out.println("--" + usuari + "--");
 		try {
 			stmt = conn.createStatement();
 			

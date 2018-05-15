@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<GridPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ControllerVeureNota">
+<GridPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ControllerVeureNota">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" />
   </columnConstraints>
@@ -84,8 +84,8 @@
                   <Insets left="15.0" />
                </HBox.margin>
                <children>
-                  <Label disable="true" ellipsisString="Data creació: ..." text="Data creació: 01/01/2018" />
-                  <Label disable="true" ellipsisString="Última modificació: ..." text="Última modificació: 19/07/2018" />
+                  <Label fx:id="dataCreacio" disable="true" ellipsisString="Data creació: ..." text="Data creació: 01/01/2018" />
+                  <Label fx:id="dataUltimaModificacio" disable="true" ellipsisString="Última modificació: ..." text="Última modificació: 19/07/2018" />
                </children>
             </VBox>
             <Separator orientation="VERTICAL" prefHeight="200.0">
@@ -98,10 +98,13 @@
                   <Insets left="15.0" />
                </HBox.margin>
             </Label>
-            <Label prefHeight="40.0" prefWidth="76.0" text="Treball" textFill="#3d2fff" underline="true" />
+            <Label fx:id="grupNota" onMouseClicked="#veureGrup" prefHeight="40.0" prefWidth="76.0" text="Treball" textFill="#3d2fff" underline="true">
+               <HBox.margin>
+                  <Insets left="10.0" />
+               </HBox.margin></Label>
          </children>
       </HBox>
-      <Label maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="70.0" prefWidth="812.0" text="Nota proritària 1" GridPane.rowIndex="2">
+      <Label fx:id="titolNota" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="70.0" prefWidth="812.0" text="Nota proritària 1" GridPane.rowIndex="2">
          <font>
             <Font name="System Bold" size="41.0" />
          </font>
@@ -129,7 +132,7 @@
          </children>
       </HBox>
       <Separator prefWidth="200.0" GridPane.rowIndex="1" GridPane.vgrow="NEVER" />
-      <Label alignment="TOP_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." textOverrun="WORD_ELLIPSIS" wrapText="true" GridPane.rowIndex="4">
+      <Label fx:id="textNota" alignment="TOP_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." textOverrun="WORD_ELLIPSIS" wrapText="true" GridPane.rowIndex="4">
          <GridPane.margin>
             <Insets top="30.0" />
          </GridPane.margin>
