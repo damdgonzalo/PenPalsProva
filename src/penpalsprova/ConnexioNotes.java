@@ -97,9 +97,9 @@ public class ConnexioNotes{
 //----------------------------------------------------------------------------------------------------------------------
 	
 	/**
-	 * Retorna una llista nom�s amb les notes noves que s'han penjat als grups que pertany l'usuari.
+	 * Retorna una llista només amb les notes noves que s'han penjat als grups que pertany l'usuari.
 	 * Si no hi ha cap nota nova, retorna una llista buida.
-	 * Es recomana utilitzar sempre despr�s de la funci� hiHaNotesNoves() , si aquesta retorna TRUE.
+	 * Es recomana utilitzar sempre després de la funció hiHaNotesNoves() , si aquesta retorna TRUE.
 	 * @return Llista amb les notes noves que t� l'usuari
 	 */
 	public List<Nota> getNotesNoves() throws Exception {

@@ -10,7 +10,15 @@ import penpalsprova.PenPalsMain;
 
 public class ControllerEditarPerfil {
 	@FXML public void veure_usuari(ActionEvent event) throws IOException {
-		GridPane pantalla_administrador = FXMLLoader.load(getClass().getResource("/view/FXMLVeureUsuari.fxml"));
+		//sGridPane pantalla_administrador = FXMLLoader.load(getClass().getResource("/view/FXMLVeureUsuari.fxml"));
+
+
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/FXMLVeureUsuari.fxml"));
+		loader.setController(new ControllerVeureUsuari(ControllerVeureUsuari.usuariActual.getId(), false));
+		
+		GridPane pantalla_administrador = loader.load();
+		
+		//GridPane pantalla_grup = FXMLLoader.load(getClass().getResource("/view/FXMLVeureGrup.fxml"));
 		PenPalsMain.border_pane_main.setCenter(pantalla_administrador);
 	}
 }

@@ -13,8 +13,13 @@ import penpalsprova.PenPalsMain;
 public class ControllerCrearNota {
 
 	@FXML public void veure_grup(Event event) throws IOException {
-		GridPane pantalla_principal = FXMLLoader.load(getClass().getResource("/view/FXMLVeureGrup.fxml"));
-		PenPalsMain.border_pane_main.setCenter(pantalla_principal);
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/FXMLVeureGrup.fxml"));
+		loader.setController(new ControllerVeureGrup(ControllerVeureGrup.grupActual));
+		
+		GridPane pantalla_grup = loader.load();
+		
+		//GridPane pantalla_grup = FXMLLoader.load(getClass().getResource("/view/FXMLVeureGrup.fxml"));
+		PenPalsMain.border_pane_main.setCenter(pantalla_grup);
 	}
 	
 	/*@FXML public void veure_grup(MouseEvent event) throws IOException {

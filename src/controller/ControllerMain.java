@@ -74,12 +74,25 @@ public class ControllerMain implements Initializable {
 			for (int i=0; i<contactes.size(); i++) {
 				Label lb = new Label(contactes.get(i));
 				llistaContactes.add(lb, 0, i);
+				
+				lb.setOnMouseClicked(e->veureUsuari(e, lb.getText()));
+				
 			}
 			
 			llistaContactes.add(new Label("   + Afegir contacte"), 0, contactes.size());
 		} catch (Exception ignored) {}
 	}
 	
+	public void veureUsuari(Event e, String idUsuari) {
+		try {
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/FXMLVeureUsuari.fxml"));
+			loader.setController(new ControllerVeureUsuari(idUsuari, true));
+			
+			GridPane pantallaUsuari = loader.load();
+			
+			PenPalsMain.border_pane_main.setCenter(pantallaUsuari);
+		} catch (Exception ignored) {ignored.printStackTrace();}
+	}
 	
 	/**
 	 * Mostra una llista amb totes les notificacions que hi han:
@@ -148,12 +161,24 @@ public class ControllerMain implements Initializable {
 		for(int i = 0; i<grups.size(); i++) {
 			Label lb = new Label(grups.get(i).getNom());
 			llistaGrups.add(lb, 0, i);
+			int j = i;
+			lb.setOnMouseClicked(e->veureGrup(e, grups.get(j)));
 		}
 		
 		Connexio.setGrups(grups); //ara la llista de grups està disponible per totes les classes
 		llistaGrups.add(new Label("   + Afegir grup"), 0, grups.size());
 	}
 	
+	private void veureGrup(Event e, Grup grup) {
+		try {
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/FXMLVeureGrup.fxml"));
+			loader.setController(new ControllerVeureGrup(grup));
+			
+			GridPane pantallaGrup = loader.load();
+			
+			PenPalsMain.border_pane_main.setCenter(pantallaGrup);
+		} catch (Exception ignored) {ignored.printStackTrace();}
+	}
 	
 	@FXML public void veure_nota(MouseEvent event) throws IOException {
 		GridPane pantalla_veure_nota = FXMLLoader.load(getClass().getResource("/view/FXMLVeureNota.fxml"));

@@ -38,7 +38,7 @@ public class ConnexioGrups {
 			
 			//llista de participants
 			Statement stmt2 = conn.createStatement();
-			ResultSet rs2 = stmt2.executeQuery("SELECT \"idUsuari\" FROM \"GrupsUsuaris\" WHERE \"idGrup\"=" + grupNou.getId());
+			ResultSet rs2 = stmt2.executeQuery("SELECT \"idUsuari\" FROM \"GrupsUsuaris\" WHERE \"idGrup\"=" + grupNou.getId() + "AND \"idUsuari\"!='" + grupNou.getAdministrador() + "'");
 			while (rs2.next()) grupNou.getParticipants().add(rs2.getString("idUsuari"));
 			rs2.close();
 			stmt2.close();
@@ -51,12 +51,69 @@ public class ConnexioGrups {
 		return grups;
 	}
 	
+	
+	
+	/**
+	 * Retorna un grup donada la seva ID per paràmetres
+	 * @param idGrup ID del grup que volem obtenir
+	 * @return Grup
+	 */
 	public static Grup getGrup(int idGrup) {
 		return Connexio.getGrups().get(idGrup);
 	}
 	
-	public static void getGrups() {
+	
+	
+	/**
+	 * Retorna una llista amb el nom dels grups en comú que té l'usuari connectat amb un altre usuari
+	 * @param idAltreUsuari ID de l'usuari amb el que es volen veure els grups en comú
+	 * @return Llista amb nombs de grup en comú
+	 * @throws Exception
+	 */
+	public List<String> getGrupsEnComuAmb(String idAltreUsuari) throws Exception {
+		List<String> grupsEnComu = new LinkedList<>();
+		List<Integer> llistaIdGrups = Connexio.getIdGrups();
 		
+		
+		String query = "SELECT g.\"nom\" FROM \"GrupsUsuaris\" gu"
+					 + " INNER JOIN \"Grups\" g ON g.\"idGrup\"=gu.\"idGrup\""
+					 + " WHERE gu.\"idUsuari\"='" + idAltreUsuari + "' AND (";
+		
+		
+		for (int i=0; i<llistaIdGrups.size(); i++) {
+			
+			if (i==llistaIdGrups.size()-1) query += "gu.\"idGrup\" = " + llistaIdGrups.get(i) + ")";
+			else query += "gu.\"idGrup\" =" + llistaIdGrups.get(i) + " OR ";
+		}
+
+		stmt = conn.createStatement();
+		ResultSet rs = stmt.executeQuery(query);
+		
+		while (rs.next()) grupsEnComu.add(rs.getString("nom"));
+		
+		return grupsEnComu;
+	}
+	
+	
+	
+	/**
+	 * Elimina un participant d'un grup particular
+	 * @param idUsuari ID de l'usuari que es vol eliminar
+	 * @param idGrup ID del grup d'on es vol eliminar el participant
+	 */
+	public void eliminarParticipantGrup(String idUsuari, int idGrup){
+		try {
+			stmt = conn.createStatement();
+			ResultSet rs = stmt.executeQuery("DELETE FROM \"GrupsUsuaris\" WHERE \"idUsuari\"='" + idUsuari + "' AND \"idGrup\"=" + idGrup);
+			rs.close();
+		} catch (Exception ignored) {}
+	}
+	
+	public void afegirParticipantAlGrup(String idUsuari, int idGrup) {
+		try {
+			stmt = conn.createStatement();
+			ResultSet rs = stmt.executeQuery("INSERT INTO \"GrupsUsuaris\" VALUES (" + idGrup + ",'" + idUsuari + "', '#000000')");
+		} catch (Exception ignored) {ignored.printStackTrace();}
 	}
 	
 }

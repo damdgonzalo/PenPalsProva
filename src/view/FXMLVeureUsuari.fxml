@@ -76,7 +76,7 @@
             <Font name="System Bold" size="15.0" />
          </font>
       </Label>
-      <Label text="Grups en comú" GridPane.rowIndex="8">
+      <Label fx:id="grupsEnComuTitol" text="Grups en comú" GridPane.rowIndex="8">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
@@ -124,7 +124,7 @@
                   <Insets bottom="2.0" right="10.0" />
                </VBox.margin>
             </Button>
-            <Button mnemonicParsing="false" onAction="#veure_grup" prefHeight="40.0" prefWidth="150.0" text="Cancelar">
+            <Button mnemonicParsing="false" onAction="#tornarEnrere" prefHeight="40.0" prefWidth="150.0" text="Cancelar">
                <font>
                   <Font size="15.0" />
                </font>

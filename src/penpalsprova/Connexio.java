@@ -22,7 +22,6 @@ public class Connexio {
 	public static Connection conn;
 	public static Statement stmt;
 	private static String usuariConnectat;
-	//private static List<Grup> grups;
 	private static HashMap<Integer,Grup> grups;
 	
 	public Connexio(String ip, String port, String usuari, String contrasenya) throws Exception {

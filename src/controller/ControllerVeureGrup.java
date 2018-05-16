@@ -34,7 +34,7 @@ public class ControllerVeureGrup implements Initializable {
 	@FXML Button btAdministrarParticipants; //només visible si sóm qui ha del grup
 	
 	public ControllerVeureGrup(Grup grupActual) {
-		this.grupActual = grupActual;
+		ControllerVeureGrup.grupActual = grupActual;
 	}
 	
 	@Override
@@ -67,7 +67,7 @@ public class ControllerVeureGrup implements Initializable {
 	@FXML public void veure_administrador(MouseEvent event) throws Exception {
 		
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/FXMLVeureUsuari.fxml"));
-		loader.setController(new ControllerVeureUsuari(grupActual.getAdministrador()));
+		loader.setController(new ControllerVeureUsuari(grupActual.getAdministrador(), false));
 		
 		GridPane pantalla_administrador = loader.load();
 		//GridPane pantalla_administrador = FXMLLoader.load(getClass().getResource("/view/FXMLVeureUsuari.fxml"));
@@ -83,7 +83,5 @@ public class ControllerVeureGrup implements Initializable {
 		GridPane crear_nota = FXMLLoader.load(getClass().getResource("/view/FXMLCrearNota.fxml"));
 		PenPalsMain.border_pane_main.setCenter(crear_nota);
 	}
-
-	
 	
 }
