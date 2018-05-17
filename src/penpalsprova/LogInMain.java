@@ -1,5 +1,6 @@
 package penpalsprova;
 
+import connexio.Connexio;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -15,7 +16,6 @@ public class LogInMain extends Application {
 	     
      @Override
      public void start(Stage stage) throws Exception {
-    	 //connexio = new Connexio("localhost", "5432", "postgres", "root");
     	 connexio = new Connexio("localhost", "5432", "postgres", "root");
     	 
     	 LogInMain.stage = stage;
@@ -25,7 +25,7 @@ public class LogInMain extends Application {
           
     	 stage.setTitle("PenPals");
     	 stage.setScene(main_scene);
-    	 stage.show();
+    	 stage.show(); //comença mostrant la pantalla de log in
      }
      
 

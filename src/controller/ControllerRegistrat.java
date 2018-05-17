@@ -3,6 +3,7 @@ package controller;
 import java.io.IOException;
 import java.sql.SQLException;
 
+import connexio.ConnexioLogIn;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -13,7 +14,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
-import penpalsprova.ConnexioLogIn;
 import penpalsprova.LogInMain;
 import penpalsprova.PenPalsMain;
 
@@ -48,7 +48,7 @@ public class ControllerRegistrat {
 		Scene scene = new Scene(root);
 		PenPalsMain.main_scene = scene;
 		
-		//al centre mostrarà la pantalla principal
+		//al centre mostrarï¿½ la pantalla principal
 		GridPane pantalla_principal = FXMLLoader.load(getClass().getResource("/view/FXMLPantallaPrincipal.fxml"));
         root.setCenter(pantalla_principal);
 		

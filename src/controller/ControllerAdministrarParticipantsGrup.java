@@ -2,12 +2,11 @@ package controller;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.ResourceBundle;
 
 import org.controlsfx.control.PopOver;
 
+import connexio.ConnexioGrups;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.event.EventHandler;
@@ -22,8 +21,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import penpalsprova.ConnexioGrups;
-import penpalsprova.Grup;
+import model.Grup;
 import penpalsprova.PenPalsMain;
 
 public class ControllerAdministrarParticipantsGrup implements Initializable {

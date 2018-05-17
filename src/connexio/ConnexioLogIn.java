@@ -1,4 +1,4 @@
-package penpalsprova;
+package connexio;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -9,7 +9,7 @@ import java.time.format.DateTimeFormatter;
 
 import org.apache.commons.validator.routines.EmailValidator;
 
-import penpalsprova.Connexio;
+import connexio.Connexio;
 
 public class ConnexioLogIn {
 	private Connection conn;
@@ -33,38 +33,38 @@ public class ConnexioLogIn {
 	
 	/**
 	 * Comprova si un usuari pot fer o no login, i retorna un missatge indicant el resultat.
-	 * Es pot fer login quan l'ID d'usuari existeix i la contrasenya està bé.
+	 * Es pot fer login quan l'ID d'usuari existeix i la contrasenya estï¿½ bï¿½.
 	 * @param usuari ID de l'usuari que vol fer login
 	 * @param contrasenya Contrasenya que l'usuari ha escrit
-	 * @return "OK" si l'usuari existeix i la contrasenya és correcta. Sino, retorna un missatge indicant perquè no es pot fer login.
+	 * @return "OK" si l'usuari existeix i la contrasenya ï¿½s correcta. Sino, retorna un missatge indicant perquï¿½ no es pot fer login.
 	 * @throws SQLException
 	 */
 	public String intentarLogIn(String usuari, String contrasenya) throws SQLException {
 		if (!usuariExisteix(usuari)) return "L'usuari no existeix.";
 		
-		if (!contrasenyaEsCorrecte(usuari, contrasenya)) return "La contrasenya és incorrecte.";
+		if (!contrasenyaEsCorrecte(usuari, contrasenya)) return "La contrasenya ï¿½s incorrecte.";
 		
 		return "OK";
 	}
 	
 	/**
-	 * Comprova si un usuari té les dades correctes per registrar-se o no, i retorna un missatge indicant el resultat.
+	 * Comprova si un usuari tï¿½ les dades correctes per registrar-se o no, i retorna un missatge indicant el resultat.
 	 * @param correu Correu de l'usuari que es vol registrar
 	 * @param usuari ID de l'usuari que es vol registrar
 	 * @param contrasenya1 Contrasenya per el nou compte
 	 * @param contrasenya2 Contrasenya per el nou compte
-	 * @return "OK" si el correu no té associat cap compte, si l'ID d'usuari és vàlid, i si les contrasenyes coincideixen.</br>
-	 * 		   En cas contrari, retorna un missatge amb informació sobre errors al registrar-se.
+	 * @return "OK" si el correu no tï¿½ associat cap compte, si l'ID d'usuari ï¿½s vï¿½lid, i si les contrasenyes coincideixen.</br>
+	 * 		   En cas contrari, retorna un missatge amb informaciï¿½ sobre errors al registrar-se.
 	 * @throws SQLException
 	 */
 	public String intentarRegistrarUsuari(String correu, String usuari, String contrasenya1, String contrasenya2) throws SQLException {
 		String missatgeSortida = "OK";
 		
 		if (correu.equals("") || usuari.equals("") || contrasenya1.equals("") || contrasenya2.equals("")) missatgeSortida = "No poden haver camps buits.";
-		else if (!correuEsValid(correu)) missatgeSortida = "El correu introduït no és vàlid.";
+		else if (!correuEsValid(correu)) missatgeSortida = "El correu introduï¿½t no ï¿½s vï¿½lid.";
 		else if (correuExisteix(correu)) missatgeSortida = "Ja ha hi ha un compte creat amb aquest correu."; 
-		else if (usuariExisteix(usuari)) missatgeSortida = "Aquest nom d'usuri ja està en us.";
-		else if (!usuariEsValid(usuari)) missatgeSortida = "El nom d'usuari ha de començar per una lletra i contenir només entre 3 i 20 caràcters alfanumérics.";
+		else if (usuariExisteix(usuari)) missatgeSortida = "Aquest nom d'usuri ja estï¿½ en us.";
+		else if (!usuariEsValid(usuari)) missatgeSortida = "El nom d'usuari ha de comenï¿½ar per una lletra i contenir nomï¿½s entre 3 i 20 carï¿½cters alfanumï¿½rics.";
 		else if (!contrasenyesCoincideixen(contrasenya1, contrasenya2)) missatgeSortida = "Les contrasenyes no coincideixen.";
 		
 		else {
@@ -83,9 +83,9 @@ public class ConnexioLogIn {
 //---------------------------------------------------------------------------------------------------------------------	
 	
 	/**
-	 * Comproba si l'ID d'un usuari té el format correcte.
+	 * Comproba si l'ID d'un usuari tï¿½ el format correcte.
 	 * @param usuari ID d'un usuari a verificar
-	 * @return TRUE si l'ID és alfanumèric (sense caràcters especials), comença per una lletra i té entre 3 i 20 caràcters
+	 * @return TRUE si l'ID ï¿½s alfanumï¿½ric (sense carï¿½cters especials), comenï¿½a per una lletra i tï¿½ entre 3 i 20 carï¿½cters
 	 */
 	private boolean usuariEsValid(String usuari) {
 		return usuari.matches("^[a-zA-Z][a-zA-Z0-9]{2,19}");
@@ -118,9 +118,9 @@ public class ConnexioLogIn {
 	
 	
 	/**
-	 * Comprova que no hi hagi cap compte creat amb un correu específic
+	 * Comprova que no hi hagi cap compte creat amb un correu especï¿½fic
 	 * @param correu Correu a comprovar
-	 * @return TRUE si el correu ja té associat un compte (ja existeix a la base de dades)
+	 * @return TRUE si el correu ja tï¿½ associat un compte (ja existeix a la base de dades)
 	 * @throws SQLException
 	 */
 	private boolean correuExisteix(String correu) throws SQLException {
@@ -134,7 +134,7 @@ public class ConnexioLogIn {
 	
 	
 	/**
-	 * Comprova si dos contrasenyes són iguals
+	 * Comprova si dos contrasenyes sï¿½n iguals
 	 * @param contrasenya1 Contrasenya 1
 	 * @param contrasenya2 Contrasenya 2
 	 * @return TRUE si les dos contrasenyes coincideixen
@@ -145,10 +145,10 @@ public class ConnexioLogIn {
 	
 	
 	/**
-	 * Retorna TRUE si una contrasenya introduïda per un usuari és correcte.
+	 * Retorna TRUE si una contrasenya introduï¿½da per un usuari ï¿½s correcte.
 	 * @param usuari ID de l'usuari
 	 * @param contrasenya Contrasenya que ha escrit l'usuari
-	 * @return TRUE si 'contrasenya' és la mateixa que l'usuari té assignada a la base de dades
+	 * @return TRUE si 'contrasenya' ï¿½s la mateixa que l'usuari tï¿½ assignada a la base de dades
 	 * @throws SQLException
 	 */
 	private boolean contrasenyaEsCorrecte(String usuari, String contrasenya) throws SQLException {

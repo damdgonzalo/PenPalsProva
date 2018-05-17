@@ -5,6 +5,8 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
+import connexio.Connexio;
+import connexio.ConnexioLogIn;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -16,8 +18,6 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import penpalsprova.Connexio;
-import penpalsprova.ConnexioLogIn;
 import penpalsprova.LogInMain;
 import penpalsprova.PenPalsMain;
 
@@ -40,6 +40,12 @@ public class ControllerLogIn implements Initializable {
 	
 //----------------------------------------------------------------------------------------------------------------------	
 	
+	/**
+	 * Pregunta al servidor si l'usuari i contrasenya sÃ³n correctes i, si ho sÃ³n, permet el log in.
+	 * Si no ho sÃ³n, mostra per pantalla un missatge d'error
+	 * @param event Click
+	 * @throws Exception
+	 */
 	@FXML public void iniciar_sessio(ActionEvent event) throws Exception {
 		String respostaLogIn = connexio.intentarLogIn(usuari.getText(), contrasenya.getText());
 		
@@ -53,18 +59,22 @@ public class ControllerLogIn implements Initializable {
 			Scene scene = new Scene(root);
 			PenPalsMain.main_scene = scene;
 			
-			//al centre mostrarà la pantalla principal
+			//al centre mostrarï¿½ la pantalla principal
 			GridPane pantalla_principal = FXMLLoader.load(getClass().getResource("/view/FXMLPantallaPrincipal.fxml"));
 	        root.setCenter(pantalla_principal);
 			
 			main_stage.setScene(scene);
 		}
-		
 		else missatgeError.setText(respostaLogIn);
 	}
 	
 //----------------------------------------------------------------------------------------------------------------------
 	
+	/**
+	 * Obre la pantalla per registrar un usuari
+	 * @param e Click
+	 * @throws Exception
+	 */
 	@FXML public void registrarUsuari(ActionEvent e) throws Exception {
 		GridPane root = FXMLLoader.load(getClass().getResource("/view/FXMLRegistrat.fxml")); //finestra que volem obrir
 		
@@ -78,6 +88,11 @@ public class ControllerLogIn implements Initializable {
 	
 //----------------------------------------------------------------------------------------------------------------------
 	
+	/**
+	 * Obre un PopUp on s'introdueix el correu de l'usuari per recuperar la contrasenya
+	 * @param e Click
+	 * @throws IOException
+	 */
 	@FXML public void contrasenyaOblidada(ActionEvent e) throws IOException {
 		GridPane root = FXMLLoader.load(getClass().getResource("/view/FXMLContrasenyaOblidada.fxml")); //finestra que volem obrir
 	   	 
@@ -85,7 +100,7 @@ public class ControllerLogIn implements Initializable {
 		contrasenyaOblidadaStage = new Stage();
     	 
 		contrasenyaOblidadaStage.setScene(scene);
-		contrasenyaOblidadaStage.setTitle("Recuperació de la contrasenya");
+		contrasenyaOblidadaStage.setTitle("Recuperaciï¿½ de la contrasenya");
 		contrasenyaOblidadaStage.setResizable(false);
 		contrasenyaOblidadaStage.initModality(Modality.WINDOW_MODAL); //impedeix que es clicki la finestra pare
 		contrasenyaOblidadaStage.initOwner(LogInMain.main_scene.getWindow()); 

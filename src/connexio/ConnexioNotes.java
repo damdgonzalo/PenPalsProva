@@ -1,10 +1,13 @@
-package penpalsprova;
+package connexio;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.LinkedList;
 import java.util.List;
+
+import model.Grup;
+import model.Nota;
 
 public class ConnexioNotes{
 	private Connection conn;

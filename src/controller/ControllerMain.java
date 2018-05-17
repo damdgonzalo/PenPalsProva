@@ -7,6 +7,9 @@ import java.util.ResourceBundle;
 
 import org.controlsfx.control.PopOver;
 
+import connexio.Connexio;
+import connexio.ConnexioContactes;
+import connexio.ConnexioGrups;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
@@ -26,11 +29,8 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import penpalsprova.Connexio;
-import penpalsprova.ConnexioContactes;
-import penpalsprova.ConnexioGrups;
+import model.Grup;
 import penpalsprova.ControlNota;
-import penpalsprova.Grup;
 import penpalsprova.LogInMain;
 import penpalsprova.PenPalsMain;
 
@@ -72,17 +72,24 @@ public class ControllerMain implements Initializable {
 			contactes = connexio.getContactesUsuari();
 			
 			for (int i=0; i<contactes.size(); i++) {
-				Label lb = new Label(contactes.get(i));
-				llistaContactes.add(lb, 0, i);
+				Label contacte = new Label(contactes.get(i));
+				llistaContactes.add(contacte, 0, i);
 				
-				lb.setOnMouseClicked(e->veureUsuari(e, lb.getText()));
-				
+				contacte.setOnMouseClicked(e->veureUsuari(e, contacte.getText())); //quan es fa click a un element de la llista (un usuari), el mostrai
 			}
 			
+			//l'últim element de la llista permet afegir un contacte nou
 			llistaContactes.add(new Label("   + Afegir contacte"), 0, contactes.size());
 		} catch (Exception ignored) {}
 	}
 	
+	
+	
+	/**
+	 * Obre en la finestra actual la vista amb els detalls d'un usuari
+	 * @param e Click
+	 * @param idUsuari ID de l'usuasri que es vol veure
+	 */
 	public void veureUsuari(Event e, String idUsuari) {
 		try {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/FXMLVeureUsuari.fxml"));
@@ -94,6 +101,7 @@ public class ControllerMain implements Initializable {
 		} catch (Exception ignored) {ignored.printStackTrace();}
 	}
 	
+	
 	/**
 	 * Mostra una llista amb totes les notificacions que hi han:
 	 * sol·licituds d'amistat, notes noves, notes editades...
@@ -102,7 +110,7 @@ public class ControllerMain implements Initializable {
 	 */
 	@FXML public void mostrarNotificacions(Event e) throws Exception {
 		
-		//mostra si hi ha alguna sol�licitud d'amistat
+		//mostra si hi ha alguna sol·licitud d'amistat
 		List<String> llistaNotificacions = connexio.veureSolicitudsAmistat();
 		
 		VBox llista = new VBox();
@@ -122,6 +130,8 @@ public class ControllerMain implements Initializable {
 			
 			llista.getChildren().add(solicitudAmistat);
 			
+			//quan es prem el botó acceptar, s'afegeix l'usuari a la llista de contactes
+			//i s'elimina de notificacions
 			btAcceptar.setOnAction(new EventHandler() {
 				@Override
 				public void handle(Event e) {
@@ -132,6 +142,7 @@ public class ControllerMain implements Initializable {
 				}
 			});
 			
+			//elimina la notificació, pero NO afegeix l'usuari a la llista de contactes
 			btDeclinar.setOnAction(new EventHandler() {
 				@Override
 				public void handle(Event e) {
@@ -149,6 +160,8 @@ public class ControllerMain implements Initializable {
 		popover.show(menuNotificacions);
 	}
 	
+	
+	
 	/**
 	 * Mostra al Menú Lateral/Grups un llistat amb els grups als qual pertany l'usuari
 	 * Com a últim element de la llista, hi ha l'opció de crear un nou grup
@@ -159,16 +172,24 @@ public class ControllerMain implements Initializable {
 		List<Grup> grups = connexioGrups.getGrupsUsuari();
 		
 		for(int i = 0; i<grups.size(); i++) {
-			Label lb = new Label(grups.get(i).getNom());
-			llistaGrups.add(lb, 0, i);
+			Label grup = new Label(grups.get(i).getNom());
+			llistaGrups.add(grup, 0, i);
 			int j = i;
-			lb.setOnMouseClicked(e->veureGrup(e, grups.get(j)));
+			grup.setOnMouseClicked(e->veureGrup(e, grups.get(j)));
 		}
 		
 		Connexio.setGrups(grups); //ara la llista de grups està disponible per totes les classes
-		llistaGrups.add(new Label("   + Afegir grup"), 0, grups.size());
+		
+		//l'últim element de la llista permet crear un grup nou
+		llistaGrups.add(new Label("   + Crear grup"), 0, grups.size());
 	}
 	
+	
+	/**
+	 * Obre en la mateixa finestra una vista amb els detalls d'un grup
+	 * @param e
+	 * @param grup Grup que es vol veure
+	 */
 	private void veureGrup(Event e, Grup grup) {
 		try {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/FXMLVeureGrup.fxml"));
@@ -180,10 +201,18 @@ public class ControllerMain implements Initializable {
 		} catch (Exception ignored) {ignored.printStackTrace();}
 	}
 	
+	
+	/**
+	 * Obre en la mateixa finestra una vista amb els detalls d'una nota
+	 * @param event
+	 * @throws IOException
+	 */
 	@FXML public void veure_nota(MouseEvent event) throws IOException {
 		GridPane pantalla_veure_nota = FXMLLoader.load(getClass().getResource("/view/FXMLVeureNota.fxml"));
 		PenPalsMain.border_pane_main.setCenter(pantalla_veure_nota);
 	}
+	
+	
 	
 	/**
 	 * Mostra la pantalla principal
@@ -196,7 +225,7 @@ public class ControllerMain implements Initializable {
 	}
 	
 	/**
-	 * Tenca la sessi� actual i torna a la pantalla d'inici
+	 * Tenca la sessió actual i torna a la pantalla d'inici
 	 * @param event
 	 * @throws IOException
 	 */
@@ -211,16 +240,16 @@ public class ControllerMain implements Initializable {
 		main_stage.setScene(scene); 
 	}
 	
+	
+	
 	/**
-	 * Mostra informaci� sobre un grup en el que s'ha fet click
+	 * Mostra informació sobre un grup en el que s'ha fet click
 	 * @param event
 	 * @throws IOException
 	 */
 	@FXML public void veure_grup(Event event) throws IOException {
 		GridPane pantalla_veure_grup = FXMLLoader.load(getClass().getResource("/view/FXMLVeureGrup.fxml"));
 		PenPalsMain.border_pane_main.setCenter(pantalla_veure_grup);
-		
-		
 	}
      
      
@@ -245,13 +274,13 @@ public class ControllerMain implements Initializable {
 	}
 	
 	/**
-	 * Obre en una finestra diferent a l'actual la pantalla "About" amb informació sobre el programa
+	 * Obre un PopUp que permet afegir una nota de manera ràpida
 	 * @param event
 	 * @throws Exception
 	 */
 	@FXML public void obrir_notaRapida(Event event) throws Exception {
 	
-    	/*Components del popOver*/
+    	//Components del popOver
 		TextField campo = new TextField();   
 		Label text = new Label("Nova Nota");
 		Button popoverButton = new Button("Guardar");
@@ -268,6 +297,11 @@ public class ControllerMain implements Initializable {
 	}
 	
 
+	/**
+	 * Obre un Popup que permet enviar una sol·licitud d'amistat a un usuari, introduïnt la seva ID
+	 * @param event
+	 * @throws IOException
+	 */
 	@FXML public void afegirUsuariRapid (Event event) throws IOException {
 		GridPane gridpane = FXMLLoader.load(getClass().getResource("/view/FXMLMenuAfegirUsuari.fxml"));
 
@@ -289,6 +323,7 @@ public class ControllerMain implements Initializable {
 	}
 	
 	@FXML TextField idUsuariEnviarSolicitud;
+	
 	
 	@FXML public void enviarSolicitudAmistat(ActionEvent e) throws Exception {
 		connexio.enviarSolicitudAmistat(idUsuariEnviarSolicitud.getText());

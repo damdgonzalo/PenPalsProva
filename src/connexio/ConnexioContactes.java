@@ -1,4 +1,4 @@
-package penpalsprova;
+package connexio;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -9,6 +9,7 @@ import java.util.List;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import model.Usuari;
 
 public class ConnexioContactes {
 

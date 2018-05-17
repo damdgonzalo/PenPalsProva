@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import connexio.Connexio;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -16,8 +17,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import penpalsprova.Connexio;
-import penpalsprova.Grup;
+import model.Grup;
 import penpalsprova.PenPalsMain;
 
 public class ControllerVeureGrup implements Initializable {

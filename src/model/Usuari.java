@@ -1,4 +1,4 @@
-package penpalsprova;
+package model;
 
 public class Usuari {
 

@@ -1,4 +1,4 @@
-package penpalsprova;
+package connexio;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -16,6 +16,7 @@ import org.apache.commons.validator.routines.EmailValidator;
 
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import model.Grup;
 
 public class Connexio {
 	
