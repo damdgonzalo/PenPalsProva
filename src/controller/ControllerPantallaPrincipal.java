@@ -91,11 +91,6 @@ public class ControllerPantallaPrincipal implements Initializable {
 	 */
 	private void veureNota(Event e, Nota nota) {
 		try {
-			//FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/FXMLVeureNota.fxml"));
-			//loader.setController(new ControllerVeureNota(nota));
-			
-			//GridPane pantalla_veure_nota = loader.load();
-			
 			notaClickada = nota;
 			GridPane pantalla_veure_nota = FXMLLoader.load(getClass().getResource("/view/FXMLVeureNota.fxml"));
 			PenPalsMain.border_pane_main.setCenter(pantalla_veure_nota);

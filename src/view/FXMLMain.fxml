@@ -88,8 +88,8 @@
         </columnConstraints>
         <rowConstraints>
             <RowConstraints maxHeight="-Infinity" minHeight="25.0" prefHeight="25.0" vgrow="NEVER" />
-          <RowConstraints maxHeight="1.7976931348623157E308" prefHeight="478.0" vgrow="ALWAYS" />
-          <RowConstraints maxHeight="-Infinity" minHeight="25.0" prefHeight="25.0" vgrow="NEVER" />
+          <RowConstraints maxHeight="1.7976931348623157E308" minHeight="467.0" prefHeight="473.0" vgrow="ALWAYS" />
+          <RowConstraints maxHeight="44.0" minHeight="25.0" prefHeight="38.0" vgrow="NEVER" />
         </rowConstraints>
          <children>
             <Accordion maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="0.0" prefWidth="178.0" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS">
@@ -213,7 +213,7 @@
                         <Image url="@../../../../../Desktop/carpeta%20sin%20título/Projecte%20PenPals/icones/001-logout.png" />
                      </image>
                      <HBox.margin>
-                        <Insets bottom="10.0" left="10.0" />
+                        <Insets bottom="10.0" left="10.0" top="5.0" />
                      </HBox.margin>
                   </ImageView>
                   <Label ellipsisString="Tencar sessió" prefHeight="31.0" prefWidth="159.0" text="Tencar sessió">
@@ -221,7 +221,7 @@
                         <Insets left="20.0" />
                      </padding>
                      <HBox.margin>
-                        <Insets bottom="10.0" />
+                        <Insets bottom="10.0" top="5.0" />
                      </HBox.margin>
                   </Label>
                </children>

@@ -10,6 +10,7 @@ import org.controlsfx.control.PopOver;
 import connexio.Connexio;
 import connexio.ConnexioContactes;
 import connexio.ConnexioGrups;
+import connexio.ConnexioNotes;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
@@ -30,6 +31,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import model.Grup;
+import model.Nota;
 import penpalsprova.ControlNota;
 import penpalsprova.LogInMain;
 import penpalsprova.PenPalsMain;
@@ -37,7 +39,8 @@ import penpalsprova.PenPalsMain;
 public class ControllerMain implements Initializable {
 	
 	static ConnexioGrups connexioGrups;
-	static ConnexioContactes connexio;
+	static ConnexioContactes connexioContactes;
+	ConnexioNotes connexioNotes;
 	static Stage about_stage;
 	
 	@FXML GridPane llistaContactes;
@@ -54,7 +57,7 @@ public class ControllerMain implements Initializable {
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {
 		try {
-			connexio = new ConnexioContactes();
+			connexioContactes = new ConnexioContactes();
 			connexioGrups = new ConnexioGrups();
 			carregarLlistaContactes();
 			carregarGrups();
@@ -69,7 +72,7 @@ public class ControllerMain implements Initializable {
 	public void carregarLlistaContactes() {
 		try {
 			List<String> contactes;
-			contactes = connexio.getContactesUsuari();
+			contactes = connexioContactes.getContactesUsuari();
 			
 			for (int i=0; i<contactes.size(); i++) {
 				Label contacte = new Label(contactes.get(i));
@@ -109,12 +112,42 @@ public class ControllerMain implements Initializable {
 	 * @throws Exception
 	 */
 	@FXML public void mostrarNotificacions(Event e) throws Exception {
-		
-		//mostra si hi ha alguna sol·licitud d'amistat
-		List<String> llistaNotificacions = connexio.veureSolicitudsAmistat();
-		
 		VBox llista = new VBox();
+		llista.setSpacing(10);
 		
+		mostrarNotificacionsSolicitudsAmistat(llista);
+		mostrarNotificacionsNotesNoves(llista);
+			
+				PopOver popover = new PopOver(llista);
+		popover.setArrowLocation(PopOver.ArrowLocation.TOP_CENTER);
+		popover.show(menuNotificacions);
+	}
+	
+	
+	public void mostrarNotificacionsNotesNoves(VBox llista) throws Exception {
+		if (connexioNotes.hiHaNotesNoves()) {
+			List<Nota> llistaNotesNoves = connexioNotes.getNotesNoves();
+			
+			for(Nota notaNova : llistaNotesNoves) {
+				
+				String textNotificacio = notaNova.getAutor() + " ha afegit la nota \"" + notaNova.getTitol() + "\" al grup " + notaNova.getGrup().getNom();
+				Label notificacioNotaNova = new Label(textNotificacio);
+				
+				llista.getChildren().add(notificacioNotaNova);
+			}
+		}
+	}
+	
+	
+	/**
+	 * Afegeix a la llista de notificacions aquelles que informen d'una sol·licitud d'amistat nova.
+	 * La sol·licitud d'amistat es podrà acceptar o declinar
+	 * @param llista Llista amb totes les notificacions
+	 */
+	public void mostrarNotificacionsSolicitudsAmistat(VBox llista) {
+		//mostra si hi ha alguna sol·licitud d'amistat
+		List<String> llistaNotificacions = connexioContactes.veureSolicitudsAmistat();
+				
 		for(String notificacio : llistaNotificacions) {
 			VBox solicitudAmistat = new VBox();
 			
@@ -135,7 +168,7 @@ public class ControllerMain implements Initializable {
 			btAcceptar.setOnAction(new EventHandler() {
 				@Override
 				public void handle(Event e) {
-					connexio.acceptarSolicitudAmistat(text.getText());
+					connexioContactes.acceptarSolicitudAmistat(text.getText());
 					llistaContactes.getChildren().clear();
 					carregarLlistaContactes();
 					llista.getChildren().remove(solicitudAmistat);
@@ -146,21 +179,12 @@ public class ControllerMain implements Initializable {
 			btDeclinar.setOnAction(new EventHandler() {
 				@Override
 				public void handle(Event e) {
-					connexio.declinarSolicitudAmistat(text.getText());
+					connexioContactes.declinarSolicitudAmistat(text.getText());
 					llista.getChildren().remove(solicitudAmistat);
 				}
 			});
 		}
-			
-		llista.setSpacing(10);
-		
-		
-		PopOver popover = new PopOver(llista);
-		popover.setArrowLocation(PopOver.ArrowLocation.TOP_CENTER);
-		popover.show(menuNotificacions);
 	}
-	
-	
 	
 	/**
 	 * Mostra al Menú Lateral/Grups un llistat amb els grups als qual pertany l'usuari
@@ -326,7 +350,7 @@ public class ControllerMain implements Initializable {
 	
 	
 	@FXML public void enviarSolicitudAmistat(ActionEvent e) throws Exception {
-		connexio.enviarSolicitudAmistat(idUsuariEnviarSolicitud.getText());
+		connexioContactes.enviarSolicitudAmistat(idUsuariEnviarSolicitud.getText());
 	}
 	
      

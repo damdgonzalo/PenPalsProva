@@ -99,6 +99,31 @@ public class ConnexioNotes{
 	
 //----------------------------------------------------------------------------------------------------------------------
 	
+	public List<Nota> getNotesDelGrup(Grup grup) throws Exception {
+		String query = "SELECT n.* FROM \"Notes\" n INNER JOIN \"GrupsNota\" g ON g.\"idNota\"=n.\"idNota\" WHERE g.\"idGrup\"=" + grup.getId();
+		
+		stmt = conn.createStatement();
+		ResultSet rs = stmt.executeQuery(query);
+		
+		List<Nota> notes = new LinkedList<>();
+		
+		while (rs.next()) {
+			Nota n = new Nota();
+			n.setId(Integer.parseInt(rs.getString("idNota")));
+			n.setTitol(rs.getString("titol"));
+			n.setText(rs.getString("cos"));
+			n.setDataPublicacio(rs.getString("dataCreacio"));
+			n.setDataUltModificacio(rs.getString("ultimaModificacio"));
+			n.setAutor(rs.getString("autor"));
+			n.setGrup(grup);
+			
+			notes.add(n);
+		}
+		
+		return notes;
+	}
+	
+//----------------------------------------------------------------------------------------------------------------------	
 	/**
 	 * Retorna una llista només amb les notes noves que s'han penjat als grups que pertany l'usuari.
 	 * Si no hi ha cap nota nova, retorna una llista buida.
@@ -175,7 +200,7 @@ public class ConnexioNotes{
 			if (i==grups.size()-1) query += "\"idGrup\" = " + grups.get(i);
 			else query += "\"idGrup\" =" + grups.get(i) + " OR ";
 		}
-		
+		System.out.println(query);
 		stmt = conn.createStatement();
 		ResultSet rs = stmt.executeQuery(query);
 		rs.next();
